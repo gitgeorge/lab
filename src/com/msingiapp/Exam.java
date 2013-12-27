@@ -24,7 +24,7 @@ public class Exam extends Activity implements OnClickListener {
 	public static ExamSession ex;
 	WebView webQuest, webChoiceA, webChoiceB, webChoiceC, webChoiceD;
 	TextView questionNo;
-	RadioGroup radioGroup;
+	public RadioGroup rgroup;
 	RadioButton radioA, radioB, radioC, radioD;
 	Button next, prev, quit;
 	int number = 0;
@@ -32,7 +32,7 @@ public class Exam extends Activity implements OnClickListener {
 	String pickedAnswer = "";
 	public static int totalAnswered = 0, incorectAnswers, totalUnaswered = 0;
 	public static int totalCorrectAns = 0;
-	public static String ans, explanation;
+	public static String ans;
 	final Context context = this;
 
 	@Override
@@ -59,39 +59,32 @@ public class Exam extends Activity implements OnClickListener {
 		webChoiceD = (WebView) findViewById(R.id.webView4);
 		webChoiceD.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		// declare radiogroup
-		radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+		rgroup = (RadioGroup) findViewById(R.id.radioGroup);
 		// declare radiobuttons
 		radioA = (RadioButton) findViewById(R.id.radio_AA);
 		radioB = (RadioButton) findViewById(R.id.radio_BB);
 		radioC = (RadioButton) findViewById(R.id.radio_CC);
 		radioD = (RadioButton) findViewById(R.id.radio_DD);
 		// add action to the radiogroup on chhagelistner
-		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+		rgroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				// checkedId is the RadioButton selected
-				switch (radioGroup.getCheckedRadioButtonId()) {
+				switch (rgroup.getCheckedRadioButtonId()) {
 				case R.id.radio_AA:
 					pickedAnswer = "A";
-					Toast.makeText(getApplicationContext(), pickedAnswer,
-							Toast.LENGTH_LONG).show();
+
 					break;
 
 				case R.id.radio_BB:
 					pickedAnswer = "B";
-					Toast.makeText(getApplicationContext(), pickedAnswer,
-							Toast.LENGTH_LONG).show();
 
 					break;
 				case R.id.radio_CC:
 					pickedAnswer = "C";
-					Toast.makeText(getApplicationContext(), pickedAnswer,
-							Toast.LENGTH_LONG).show();
 
 					break;
 				case R.id.radio_DD:
 					pickedAnswer = "D";
-					Toast.makeText(getApplicationContext(), pickedAnswer,
-							Toast.LENGTH_LONG).show();
 
 					break;
 				}
@@ -131,6 +124,7 @@ public class Exam extends Activity implements OnClickListener {
 		}
 	}
 
+	@SuppressLint("ShowToast")
 	public void nextRecord() {
 		number++;
 		if (number == quest.size()) {
@@ -146,6 +140,7 @@ public class Exam extends Activity implements OnClickListener {
 			ex = (ExamSession) quest.get(number);
 			int questNo = number + 1;
 			// displaying questions to the user
+			ans = ex.getSelectedAnswer();
 			questionNo.setText("	Question	" + questNo + "	out of 50");
 			webQuest.loadData(ex.getQuestion(), "text/html", "utf-8");
 			webChoiceA.loadData(ex.getChoice1(), "text/html", "utf-8");
@@ -157,27 +152,22 @@ public class Exam extends Activity implements OnClickListener {
 				 * if user has reached the end of results, disable forward
 				 * button
 				 */
-
 				next.setEnabled(false);
 				prev.setEnabled(true);
 				// dec by one to counter last inc
-
 			}
-
 			// set the selected answer -1 because we are setting when nxt btn
 			// is clicked
 			ex = (ExamSession) quest.get(number - 1);
 			ex.setSelectedAnswer(pickedAnswer);
 			// get the picked answer at that index
-			// explanation = ex.getExplanation();
-			ans = ex.getSelectedAnswer();
+			clearRadioButtons();
 			selectedAnswer();
-			// clearRadioButtons();
-
 		}
 
 	}
 
+	@SuppressLint("ShowToast")
 	public void previousRecord() {
 		number--;
 		if (number < 0) {
@@ -191,6 +181,8 @@ public class Exam extends Activity implements OnClickListener {
 			ex = (ExamSession) quest.get(number);
 			int questNo = number + 1;
 			// displaying search record in text fields
+			ans = ex.getSelectedAnswer();
+
 			questionNo.setText("	Question	" + questNo + "	out of 50");
 			webQuest.loadData(ex.getQuestion(), "text/html", "utf-8");
 			webChoiceA.loadData(ex.getChoice1(), "text/html", "utf-8");
@@ -202,11 +194,8 @@ public class Exam extends Activity implements OnClickListener {
 			ex = (ExamSession) quest.get(number + 1);
 			ex.setSelectedAnswer(pickedAnswer);
 			// get the picked answer at that index
-
-			ans = ex.getSelectedAnswer();
+			clearRadioButtons();
 			selectedAnswer();
-			// clearRadioButtons();
-
 		}
 
 	}
@@ -294,29 +283,13 @@ public class Exam extends Activity implements OnClickListener {
 
 	}
 
-	public void unaswredQuestions() {
-
-		for (int j = 0; j < quest.size(); j++) {
-			ex = (ExamSession) quest.get(j);
-			if (ex.selectedAnswer.equals("")) {
-
-				questionNo.setText("	Question	" + j + 1 + "	out of 50");
-				webQuest.loadData(ex.getQuestion(), "text/html", "utf-8");
-				webChoiceA.loadData(ex.getChoice1(), "text/html", "utf-8");
-				webChoiceB.loadData(ex.getChoice2(), "text/html", "utf-8");
-				webChoiceC.loadData(ex.getChoice3(), "text/html", "utf-8");
-				webChoiceD.loadData(ex.getChoice4(), "text/html", "utf-8");
-			}
-		}
-	}
-
 	public void clearRadioButtons() {
 		webQuest.reload();
 		webChoiceA.reload();
 		webChoiceB.reload();
 		webChoiceC.reload();
 		webChoiceD.reload();
-		radioGroup.clearCheck();
+		rgroup.clearCheck();
 		pickedAnswer = "";
 
 	}
@@ -325,22 +298,32 @@ public class Exam extends Activity implements OnClickListener {
 	// radio btn in question and the re-assing it if answer is changed
 
 	public void selectedAnswer() {
+		try {
 
-		if (ans.equals("A")) {
-			radioGroup.check(R.id.radio_AA);
-			pickedAnswer = "A";
-		}
-		if (ans.equals("B")) {
-			radioGroup.check(R.id.radio_BB);
-			pickedAnswer = "B";
-		}
-		if (ans.equals("C")) {
-			radioGroup.check(R.id.radio_C);
-			pickedAnswer = "C";
-		}
-		if (ans.equals("D")) {
-			radioGroup.check(R.id.radio_D);
-			pickedAnswer = "D";
+			if (ans.equals("")) {
+				pickedAnswer = "";
+			}
+			if (ans.equals("A")) {
+				rgroup.check(R.id.radio_AA);
+				pickedAnswer = "A";
+			}
+			if (ans.equals("B")) {
+				rgroup.check(R.id.radio_BB);
+				pickedAnswer = "B";
+			}
+			if (ans.equals("C")) {
+				rgroup.check(R.id.radio_C);
+				pickedAnswer = "C";
+			}
+			if (ans.equals("D")) {
+				rgroup.check(R.id.radio_D);
+				pickedAnswer = "D";
+			}
+			Toast.makeText(getApplicationContext(), "selected answer is" + ans,
+					Toast.LENGTH_LONG).show();
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}
@@ -358,11 +341,9 @@ public class Exam extends Activity implements OnClickListener {
 			markExam();
 			break;
 		case R.id.Button_Next:
-			clearRadioButtons();
 			nextRecord();
 			break;
 		case R.id.Button_Prev:
-			clearRadioButtons();
 			previousRecord();
 			break;
 		}
