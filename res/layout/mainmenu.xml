@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical" >
+
+        <!-- call Header layout -->
+
+        <include layout="@layout/header" />
+        <!-- space -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" />
+        <!-- another layout to hold the button rows -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="6dip" >
+
+            <!-- 1st row -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnexam"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:drawableTop="@drawable/exam"
+                    android:text="Exam"
+                    android:textColor="@layout/buttondesign" />
+
+                <Button
+                    android:id="@+id/btnhelp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:drawableTop="@drawable/help"
+                    android:text="Help "
+                    android:textColor="@layout/buttondesign" />
+            </LinearLayout>
+
+            <!-- spaces -->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="60dp" />
+
+            <!-- 2nd row -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnshare"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:drawableTop="@drawable/share"
+                    android:text="Share"
+                    android:textColor="@layout/buttondesign" />
+                <Button
+                    android:id="@+id/btnabout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:drawableTop="@drawable/about"
+                    android:text="About"
+                    android:textColor="@layout/buttondesign" />
+            </LinearLayout>
+            <!-- spaces -->
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="60dp" />
+            <!-- Space -->        
+            <!-- 3rd row -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="horizontal" >
+                <Button
+                    android:id="@+id/btnquit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:drawableTop="@drawable/quit"
+                    android:text="Quit"
+                    android:textColor="@layout/buttondesign" />       
+            </LinearLayout>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="60dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

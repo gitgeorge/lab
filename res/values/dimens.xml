@@ -1,0 +1,37 @@
+<resources>
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    
+    <dimen name="logo_size">48dp</dimen>
+    <dimen name="logo2_size">36dp</dimen>
+      <dimen name="splashlogo_size">20dp</dimen>
+	<dimen name="version_size">15dp</dimen>
+	<dimen name="version_spacing">3dp</dimen>
+    
+	<dimen name="screen_title_size">30dp</dimen>
+	<dimen name="menu_item_size">24dp</dimen>
+	<dimen name="button_item_size">18dp</dimen>
+	
+	<dimen name="scores_screen_title_size">24dp</dimen>
+	
+	<dimen name="help_text_padding">20dp</dimen>
+	<dimen name="help_text_size">7pt</dimen>
+	<dimen name="help_text_fading">25dp</dimen>
+	<dimen name="help_text_drawable_padding">5dp</dimen>
+	
+	<dimen name="exam_button_size">36dp</dimen>
+    <dimen name="exam_padding">45dp</dimen>
+    <dimen name="exam_image_size">225dp</dimen>
+    <dimen name="exam_question_size">22dp</dimen>
+    <dimen name="exam_item_size">20dp</dimen>
+    
+    <dimen name="result_header_size">20dp</dimen>
+    <dimen name="result_header2_size">16dp</dimen>
+    <dimen name="result_text_size">16dp</dimen>
+    <dimen name="result_text2_size">16dp</dimen>
+    <dimen name="result_padding">8dp</dimen>
+    
+
+</resources>

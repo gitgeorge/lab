@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="subjects">
+        <item name="maths">Mathematics</item>
+        <item name="eng">English</item>
+        <item name="kis">Kiswahili</item>
+        <item name="sci">Science</item>
+        <item name="social">Social Studies</item>
+        <item name="ire">CRE</item>
+        <item name="hre">IRE</item>
+        <item name="cre">HRE</item>
+    </string-array>
+
+</resources>

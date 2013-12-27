@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="0dp"
+    android:orientation="vertical"
+    android:padding="0dp"
+    android:shadowColor="@android:color/white" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvquestionNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@android:color/white"
+            android:text="@string/question"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <WebView
+            android:id="@+id/quest_web_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </WebView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/space5"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp" >
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/radio_A"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <WebView
+                    android:id="@+id/answer_web_viewA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="30" />
+            </TableRow>
+
+            <TextView
+                android:id="@+id/space2"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp" />
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/radio_B"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <WebView
+                    android:id="@+id/answer_web_viewB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="30" />
+            </TableRow>
+
+            <TextView
+                android:id="@+id/space3"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp" />
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/radio_C"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <WebView
+                    android:id="@+id/answer_web_viewC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="30" />
+            </TableRow>
+
+            <TextView
+                android:id="@+id/space4"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp" />
+
+            <TableRow
+                android:id="@+id/tableRow5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/radio_D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <WebView
+                    android:id="@+id/answer_web_viewD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="30" />
+            </TableRow>
+
+            <TextView
+                android:id="@+id/space7"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp" />
+        </RadioGroup>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/space6"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="6" >
+
+        <Button
+            android:id="@+id/Button_Prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/previous" >
+        </Button>
+
+        <Button
+            android:id="@+id/Button_Next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/next" >
+        </Button>
+
+        <Button
+            android:id="@+id/Button_Quit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/quit_exam" >
+        </Button>
+    </LinearLayout>
+
+</RelativeLayout>
