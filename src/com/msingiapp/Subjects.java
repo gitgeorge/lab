@@ -1,17 +1,15 @@
 package com.msingiapp;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class Subjects extends ListActivity {
+public class Subjects extends Activity {
 	public static String  subject;
-
 	ListView list;
 
 	@Override
@@ -20,15 +18,20 @@ public class Subjects extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.subjects);
 		// find view
-		list = getListView();
+		String[] web = { "Mathematics", "English", "Kiswahili", "Science", "Social Studies",
+				"Cre", "Ire","Hre" };
+		Integer[] imageId = { R.drawable.about, R.drawable.about,
+				R.drawable.about, R.drawable.about, R.drawable.about,
+				R.drawable.about, R.drawable.about, R.drawable.about };
 		// set up the list adapter to fetch lists array from subjects.xml in
 		// values
-		setListAdapter(new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, getResources()
-						.getStringArray(R.array.subjects)));
+		CustomList adapter = new CustomList(Subjects.this, web, imageId);
+		// set up the list adapter to fetch lists array from subjects.xml in
+		// values
+		list = (ListView) findViewById(R.id.list);
+		list.setAdapter(adapter);
 		// adding action to the list
 		list.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
