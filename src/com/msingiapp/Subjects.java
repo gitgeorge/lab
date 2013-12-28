@@ -25,8 +25,8 @@ public class Subjects extends Activity {
 		String[] web = { "Mathematics", "English", "Kiswahili", "Science", "Social Studies",
 				"Cre", "Ire","Hre" };
 		Integer[] imageId = { R.drawable.math, R.drawable.english,
-				R.drawable.swahili, R.drawable.about, R.drawable.about,
-				R.drawable.about, R.drawable.about, R.drawable.about };
+				R.drawable.swahili, R.drawable.science, R.drawable.socialstudies,
+				R.drawable.cre, R.drawable.ire, R.drawable.hre };
 		// set up the list adapter to fetch lists array from subjects.xml in
 		// values
 		CustomList adapter = new CustomList(Subjects.this, web, imageId);
