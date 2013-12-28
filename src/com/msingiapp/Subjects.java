@@ -24,8 +24,8 @@ public class Subjects extends Activity {
 		// find view
 		String[] web = { "Mathematics", "English", "Kiswahili", "Science", "Social Studies",
 				"Cre", "Ire","Hre" };
-		Integer[] imageId = { R.drawable.about, R.drawable.about,
-				R.drawable.about, R.drawable.about, R.drawable.about,
+		Integer[] imageId = { R.drawable.math, R.drawable.english,
+				R.drawable.swahili, R.drawable.about, R.drawable.about,
 				R.drawable.about, R.drawable.about, R.drawable.about };
 		// set up the list adapter to fetch lists array from subjects.xml in
 		// values
