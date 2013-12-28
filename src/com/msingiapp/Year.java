@@ -27,6 +27,10 @@ public class Year extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		View title = getWindow().findViewById(android.R.id.title);
+		View titleBar = (View) title.getParent();
+		titleBar.setBackgroundColor(getResources().getColor(
+				R.color.dark_green_color));
 		setContentView(R.layout.year);
 		// find view
 		TextView tvYear = (TextView) findViewById(R.id.tvsub);

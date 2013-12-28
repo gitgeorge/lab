@@ -40,6 +40,10 @@ public class Exam extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.exam2);
+		View title = getWindow().findViewById(android.R.id.title);
+		View titleBar = (View) title.getParent();
+		titleBar.setBackgroundColor(getResources().getColor(
+				R.color.dark_green_color));
 		initialize();
 		displayFirstQuestion();
 

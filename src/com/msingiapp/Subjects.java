@@ -16,6 +16,10 @@ public class Subjects extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		View title = getWindow().findViewById(android.R.id.title);
+		View titleBar = (View) title.getParent();
+		titleBar.setBackgroundColor(getResources().getColor(
+				R.color.dark_green_color));
 		setContentView(R.layout.subjects);
 		// find view
 		String[] web = { "Mathematics", "English", "Kiswahili", "Science", "Social Studies",
