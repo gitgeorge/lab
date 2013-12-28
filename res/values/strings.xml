@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">MsingiPACK</string>
+    <string name="app_name">MsingiPACK Learning and Mobile Revision</string>
     <string name="splash">Splash Screen</string>
     <string name="login">Login Screen</string>
     <string name="menu">Main Menu</string>
@@ -12,6 +12,7 @@
     <string name="exam_session">MsingiPACK - Exam Session</string>
     <string name="results_session">MsingiPACK - Exam Results</string>
     <string name="revision_session">MsingiPACK - Revision Session</string>
+    <string name="spinner_title">Select year</string>
     <string name="help_label">MsingiPACK - Help</string>
     <string name="subject">KCPE EXAM</string>
     <string name="help">Help</string>
@@ -50,7 +51,7 @@
     <string name="review_title">Answers and Explanations</string>
     <string name="review">Review your choices and explanations for the correct answers.</string>
     <string name="ok">OK</string>
-     <string name="cancel">Cancel</string>
+    <string name="cancel">Cancel</string>
     <string name="explanation">Here is the explanation for the correct answer.</string>
     <string name="examfinish">Some questions are unanswered and will be marked as incorrect. Do you want to end the exam?</string>
     <string name="qsatpfinish">Are you sure that you want to close the revision session?</string>

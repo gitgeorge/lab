@@ -2,73 +2,85 @@ package com.msingiapp;
 
 import java.util.List;
 
-import android.app.ListActivity;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Year extends ListActivity {
+public class Year extends Activity {
 	public static String question_year;
 	DatabaseHelper db = new DatabaseHelper(this);
 	ExamSession ex;
 	ListView list;
 	TextView subject;
 
+	@SuppressLint("DefaultLocale")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.year);
 		// find view
-		subject = (TextView) findViewById(R.id.tvsub);
-		subject.setText(Subjects.subject);
-		list = getListView();
-		// set up the list adapter to fetch lists array from subjects.xml in
-		// values
-		setListAdapter(new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, getResources()
-						.getStringArray(R.array.kcpeyear)));
-		// adding action to the list
-		list.setOnItemClickListener(new OnItemClickListener() {
+		TextView tvYear = (TextView) findViewById(R.id.tvsub);
+		tvYear.setText(Subjects.subject.toUpperCase());
+		Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+				this, R.array.kcpeyear, android.R.layout.simple_spinner_item);
+
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinner.setAdapter(adapter);
+
+		spinner.setOnItemSelectedListener(new OnItemSelectedListener()
+
+		{
+			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				// call various activity when item is selected in each instance
 				if (position == 0) {
-					question_year = "2005";
-					checkDatabase();
+
 				} else if (position == 1) {
-					question_year = "2006";
-					checkDatabase();
-				} else if (position == 2) {
-					question_year = "2007";
-					checkDatabase();
-				} else if (position == 3) {
-					question_year = "2008";
-					checkDatabase();
-				} else if (position == 4) {
-					question_year = "2009";
-					checkDatabase();
-				} else if (position == 5) {
-					question_year = "2010";
-					checkDatabase();
-				} else if (position == 6) {
-					question_year = "2011";
-					checkDatabase();
-				} else if (position == 7) {
-					question_year = "2012";
-					checkDatabase();
-				} else if (position == 7) {
 					question_year = "2013";
 					checkDatabase();
+				} else if (position == 2) {
+					question_year = "2012";
+					checkDatabase();
+				} else if (position == 3) {
+					question_year = "2011";
+					checkDatabase();
+				} else if (position == 4) {
+					question_year = "2010";
+					checkDatabase();
+				} else if (position == 5) {
+					question_year = "2009";
+					checkDatabase();
+				} else if (position == 6) {
+					question_year = "2008";
+					checkDatabase();
+				} else if (position == 7) {
+					question_year = "2007";
+					checkDatabase();
+				} else if (position == 8) {
+					question_year = "2006";
+					checkDatabase();
+				} else if (position == 9) {
+					question_year = "2005";
+					checkDatabase();
 				}
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
 
 			}
 
@@ -81,8 +93,8 @@ public class Year extends ListActivity {
 		List<ExamSession> examQuestion = db.getAllQusetions();
 		if (examQuestion.isEmpty()) {
 			Toast.makeText(getApplicationContext(),
-					Subjects.subject+"	exam content not ready !", Toast.LENGTH_LONG)
-					.show();
+					Subjects.subject + "	exam content not ready !",
+					Toast.LENGTH_LONG).show();
 		} else {
 			Intent exam = new Intent(Year.this, Exam.class);
 			startActivity(exam);

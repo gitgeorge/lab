@@ -2,14 +2,16 @@
 <resources>
 
     <string-array name="kcpeyear">
-        <item name="year1">KCPE YEAR 2005</item>
-        <item name="year2">KCPE YEAR 2006</item>
-        <item name="year3">KCPE YEAR 2007</item>
-        <item name="year4">KCPE YEAR 2008</item>
+        <item name="year0">Select year of exam</item>
+        <item name="year1">KCPE YEAR 2013</item>
+        <item name="year2">KCPE YEAR 2012</item>
+        <item name="year3">KCPE YEAR 2011</item>
+        <item name="year4">KCPE YEAR 2010</item>
         <item name="year5">KCPE YEAR 2009</item>
-        <item name="year6">KCPE YEAR 2010</item>
-        <item name="year7">KCPE YEAR 2012</item>
-        <item name="yearr8">KCPE YEAR 2013</item>
+        <item name="year6">KCPE YEAR 2008</item>
+        <item name="year7">KCPE YEAR 2007</item>
+        <item name="yearr8">KCPE YEAR 2006</item>
+        <item name="yearr9">KCPE YEAR 2005</item>
     </string-array>
 
 </resources>
