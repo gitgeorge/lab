@@ -70,14 +70,14 @@
                 android:orientation="horizontal" >
 
                 <Button
-                    android:id="@+id/btnshare"
+                    android:id="@+id/btnquit"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#ffffff"
-                    android:drawableTop="@drawable/share"
-                    android:text="Share"
-                    android:textColor="@layout/buttondesign" />
+                    android:drawableTop="@drawable/button_cancel"
+                    android:text="Quit"
+                    android:textColor="@layout/buttondesign" />     
                 <Button
                     android:id="@+id/btnabout"
                     android:layout_width="fill_parent"
@@ -93,22 +93,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="60dp" />
             <!-- Space -->        
-            <!-- 3rd row -->
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:orientation="horizontal" >
-                <Button
-                    android:id="@+id/btnquit"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#ffffff"
-                    android:drawableTop="@drawable/quit"
-                    android:text="Quit"
-                    android:textColor="@layout/buttondesign" />       
-            </LinearLayout>
+           
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="60dp" />

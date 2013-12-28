@@ -27,8 +27,6 @@ public class MainMenu extends Activity implements OnClickListener {
 		exam.setOnClickListener(this);
 		help = (Button) findViewById(R.id.btnhelp);
 		help.setOnClickListener(this);
-		share = (Button) findViewById(R.id.btnshare);
-		share.setOnClickListener(this);
 		quit = (Button) findViewById(R.id.btnquit);
 		quit.setOnClickListener(this);
 		about = (Button) findViewById(R.id.btnabout);
@@ -46,19 +44,6 @@ public class MainMenu extends Activity implements OnClickListener {
 			Intent help = new Intent(this, Help.class);
 			startActivity(help);
 			break;
-		case R.id.btnshare:
-			Intent smsIntent = new Intent(Intent.ACTION_VIEW);
-
-			smsIntent.putExtra("sms_body",
-					"Check out and download MsingiPACK examination application "
-							+ "https://safaricom.......");
-
-			smsIntent.setType("vnd.android-dir/mms-sms");
-
-			startActivity(smsIntent);
-
-			break;
-
 		case R.id.btnabout:
 			Intent about = new Intent(this, About.class);
 			startActivity(about);
