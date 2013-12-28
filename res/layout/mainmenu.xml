@@ -41,7 +41,7 @@
                     android:layout_weight="1"
                     android:background="#ffffff"
                     android:drawableTop="@drawable/exam"
-                    android:text="Exam"
+                    android:text="Start Exam"
                     android:textColor="@layout/buttondesign" />
 
                 <Button
@@ -51,7 +51,7 @@
                     android:layout_weight="1"
                     android:background="#ffffff"
                     android:drawableTop="@drawable/help"
-                    android:text="Help "
+                    android:text="Get Help "
                     android:textColor="@layout/buttondesign" />
             </LinearLayout>
 
@@ -76,7 +76,7 @@
                     android:layout_weight="1"
                     android:background="#ffffff"
                     android:drawableTop="@drawable/button_cancel"
-                    android:text="Quit"
+                    android:text="Exit MsingiPACK"
                     android:textColor="@layout/buttondesign" />     
                 <Button
                     android:id="@+id/btnabout"
@@ -85,7 +85,7 @@
                     android:layout_weight="1"
                     android:background="#ffffff"
                     android:drawableTop="@drawable/about"
-                    android:text="About"
+                    android:text="About msingiPACK"
                     android:textColor="@layout/buttondesign" />
             </LinearLayout>
             <!-- spaces -->
