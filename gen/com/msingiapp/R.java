@@ -141,7 +141,7 @@ public final class R {
         public static final int linearLayout2=0x7f0c005f;
         public static final int linearLayout3=0x7f0c001f;
         public static final int list=0x7f0c0066;
-        public static final int menu_settings=0x7f0c0069;
+        public static final int menu_settings=0x7f0c006a;
         public static final int panelIconLeft=0x7f0c002c;
         public static final int panelIconRight=0x7f0c002e;
         public static final int progressBar2=0x7f0c0062;
@@ -164,7 +164,7 @@ public final class R {
         public static final int space5=0x7f0c0006;
         public static final int space6=0x7f0c0018;
         public static final int space7=0x7f0c0017;
-        public static final int spinner=0x7f0c0068;
+        public static final int spinner=0x7f0c0069;
         public static final int tableResults=0x7f0c0045;
         public static final int tableRow1=0x7f0c0008;
         public static final int tableRow10=0x7f0c005b;
@@ -185,6 +185,7 @@ public final class R {
         public static final int tvquestionNumber=0x7f0c0004;
         public static final int tvquestionNumber1=0x7f0c001d;
         public static final int tvrevisonNo=0x7f0c0038;
+        public static final int tvspace=0x7f0c0068;
         public static final int tvsub=0x7f0c0067;
         public static final int txt=0x7f0c0031;
         public static final int txtHeading=0x7f0c002d;
