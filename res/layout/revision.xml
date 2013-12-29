@@ -238,6 +238,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:drawableTop="@drawable/previous"
             android:text="@string/previous" >
         </Button>
 
@@ -246,6 +247,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:drawableTop="@drawable/next"
             android:text="@string/next" >
         </Button>
 
@@ -254,6 +256,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:drawableTop="@drawable/finish"
             android:text="@string/quit_exam" >
         </Button>
     </LinearLayout>

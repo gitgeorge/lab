@@ -19,13 +19,15 @@
         <Button
             android:id="@+id/dialogButtonOK"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:drawableTop="@drawable/ok"
             android:text="@string/ok" />
 
         <Button
             android:id="@+id/dialogButtonCancel"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:drawableTop="@drawable/exit"
             android:text="@string/cancel" />
     </LinearLayout>
 
