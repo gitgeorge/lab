@@ -9,8 +9,8 @@
 
     <ScrollView
         android:id="@+id/ScrollView01"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:isScrollContainer="true"
         android:scrollbars="vertical" >
 
@@ -223,42 +223,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp" >
             </WebView>
+  <!-- space -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp" >
+            </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="0dp"
+                android:weightSum="6" >
+
+                <Button
+                    android:id="@+id/Button_Prev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableTop="@drawable/previous"
+                    android:text="@string/previous" >
+                </Button>
+
+                <Button
+                    android:id="@+id/Button_Next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableTop="@drawable/next"
+                    android:text="@string/next" >
+                </Button>
+
+                <Button
+                    android:id="@+id/Button_Quit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableTop="@drawable/finish"
+                    android:text="@string/quit_exam" >
+                </Button>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:weightSum="6" >
-
-        <Button
-            android:id="@+id/Button_Prev"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:drawableTop="@drawable/previous"
-            android:text="@string/previous" >
-        </Button>
-
-        <Button
-            android:id="@+id/Button_Next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:drawableTop="@drawable/next"
-            android:text="@string/next" >
-        </Button>
-
-        <Button
-            android:id="@+id/Button_Quit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:drawableTop="@drawable/finish"
-            android:text="@string/quit_exam" >
-        </Button>
-    </LinearLayout>
 
 </RelativeLayout>

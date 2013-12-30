@@ -31,7 +31,14 @@ public class MainMenu extends Activity implements OnClickListener {
 		quit.setOnClickListener(this);
 		about = (Button) findViewById(R.id.btnabout);
 		about.setOnClickListener(this);
-		
+
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		finish();
 	}
 
 	public void onClick(View v) {
@@ -54,6 +61,7 @@ public class MainMenu extends Activity implements OnClickListener {
 			intent.addCategory(Intent.CATEGORY_HOME);
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(intent);
+			System.exit(0);
 			break;
 
 		}

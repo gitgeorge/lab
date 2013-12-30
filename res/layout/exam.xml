@@ -14,7 +14,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/tvquestionNumber"
+            android:id="@+id/tvquestionNumber1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:shadowColor="@android:color/white"
@@ -23,7 +23,7 @@
             android:textSize="20sp" />
 
         <WebView
-            android:id="@+id/quest_web_view"
+            android:id="@+id/quest_web_view1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
         </WebView>
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content" >
 
                 <RadioButton
-                    android:id="@+id/radio_A"
+                    android:id="@+id/radio_AA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content" >
 
                 <RadioButton
-                    android:id="@+id/radio_B"
+                    android:id="@+id/radio_BB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content" >
 
                 <RadioButton
-                    android:id="@+id/radio_C"
+                    android:id="@+id/radio_CC"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content" >
 
                 <RadioButton
-                    android:id="@+id/radio_D"
+                    android:id="@+id/radio_DD"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

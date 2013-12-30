@@ -50,32 +50,30 @@ public class Year extends Activity {
 					int position, long id) {
 				// call various activity when item is selected in each instance
 				if (position == 0) {
-
-				} else if (position == 1) {
 					question_year = "2013";
 					checkDatabase();
-				} else if (position == 2) {
+				} else if (position == 1) {
 					question_year = "2012";
 					checkDatabase();
-				} else if (position == 3) {
+				} else if (position == 2) {
 					question_year = "2011";
 					checkDatabase();
-				} else if (position == 4) {
+				} else if (position == 3) {
 					question_year = "2010";
 					checkDatabase();
-				} else if (position == 5) {
+				} else if (position == 4) {
 					question_year = "2009";
 					checkDatabase();
-				} else if (position == 6) {
+				} else if (position == 5) {
 					question_year = "2008";
 					checkDatabase();
-				} else if (position == 7) {
+				} else if (position == 6) {
 					question_year = "2007";
 					checkDatabase();
-				} else if (position == 8) {
+				} else if (position == 7) {
 					question_year = "2006";
 					checkDatabase();
-				} else if (position == 9) {
+				} else if (position == 8) {
 					question_year = "2005";
 					checkDatabase();
 				}

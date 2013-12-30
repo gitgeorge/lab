@@ -176,6 +176,13 @@ public class Revision extends Activity implements OnClickListener {
 	}
 
 	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		finish();
+	}
+
+	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.Button_Quit:

@@ -34,11 +34,7 @@ public class SplashActivity extends MainActivity {
 	/**
 	 * Helper method to start the animation on the splash screen
 	 */
-	private void startAnimating() {
-		// Fade in top title
-		TextView logo1 = (TextView) findViewById(R.id.TextViewTopTitle);
-		Animation fade1 = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-		logo1.startAnimation(fade1);
+	private void startAnimating() {	
 		// Fade in bottom title after a built-in delay.
 		TextView logo2 = (TextView) findViewById(R.id.TextViewBottomTitle);
 		Animation fade2 = AnimationUtils.loadAnimation(this, R.anim.fade_in2);
@@ -62,9 +58,7 @@ public class SplashActivity extends MainActivity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		// Stop the animation
-		TextView logo1 = (TextView) findViewById(R.id.TextViewTopTitle);
-		logo1.clearAnimation();
+		// Stop the animation	
 		TextView logo2 = (TextView) findViewById(R.id.TextViewBottomTitle);
 		logo2.clearAnimation();
 	}

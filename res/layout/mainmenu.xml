@@ -85,7 +85,7 @@
                     android:layout_weight="1"
                     android:background="#ffffff"
                     android:drawableTop="@drawable/about"
-                    android:text="About msingiPACK"
+                    android:text="About MsingiPACK"
                     android:textColor="@layout/buttondesign" />
             </LinearLayout>
             <!-- spaces -->

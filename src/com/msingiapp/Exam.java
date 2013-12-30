@@ -256,6 +256,7 @@ public class Exam extends Activity implements OnClickListener {
 					dialog.dismiss();
 					Intent finish = new Intent(Exam.this, Score.class);
 					startActivity(finish);
+					finish();
 				}
 			});
 			Button dialogCancel = (Button) dialog
@@ -274,6 +275,7 @@ public class Exam extends Activity implements OnClickListener {
 			Grade.Grading(quest.size(), totalCorrectAns);
 			Intent finish = new Intent(Exam.this, Score.class);
 			startActivity(finish);
+			finish();
 		}
 	}
 
@@ -316,15 +318,14 @@ public class Exam extends Activity implements OnClickListener {
 				pickedAnswer = "B";
 			}
 			if (ans.equals("C")) {
-				rgroup.check(R.id.radio_C);
+				rgroup.check(R.id.radio_CC);
 				pickedAnswer = "C";
 			}
 			if (ans.equals("D")) {
-				rgroup.check(R.id.radio_D);
+				rgroup.check(R.id.radio_DD);
 				pickedAnswer = "D";
 			}
-			Toast.makeText(getApplicationContext(), "selected answer is" + ans,
-					Toast.LENGTH_LONG).show();
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -343,6 +344,7 @@ public class Exam extends Activity implements OnClickListener {
 			ex.setSelectedAnswer(pickedAnswer);
 			lastSelectedAns();
 			markExam();
+
 			break;
 		case R.id.Button_Next:
 			nextRecord();
@@ -351,5 +353,12 @@ public class Exam extends Activity implements OnClickListener {
 			previousRecord();
 			break;
 		}
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		finish();
 	}
 }

@@ -9,7 +9,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class Subjects extends Activity {
-	public static String  subject;
+	public static String subject;
 	ListView list;
 
 	@Override
@@ -22,11 +22,13 @@ public class Subjects extends Activity {
 				R.color.dark_green_color));
 		setContentView(R.layout.subjects);
 		// find view
-		String[] web = { "Mathematics", "English", "Kiswahili", "Science", "Social Studies",
-				"Cre", "Ire","Hre" };
+		String[] web = { "Mathematics", "English", "Kiswahili", "Science",
+				"SOCIAL STUDIES", "Cristian Religious Education (C.R.E)",
+				"Islamic Religious Education  (I.R.E)", "Hindu Religious Education (H.R.E)" };
 		Integer[] imageId = { R.drawable.math, R.drawable.english,
-				R.drawable.swahili, R.drawable.science, R.drawable.socialstudies,
-				R.drawable.cre, R.drawable.ire, R.drawable.hre };
+				R.drawable.swahili, R.drawable.science,
+				R.drawable.socialstudies, R.drawable.cre, R.drawable.ire,
+				R.drawable.hre };
 		// set up the list adapter to fetch lists array from subjects.xml in
 		// values
 		CustomList adapter = new CustomList(Subjects.this, web, imageId);
@@ -60,7 +62,7 @@ public class Subjects extends Activity {
 					startActivity(maths);
 
 				} else if (position == 4) {
-					subject = "Social Studies";
+					subject = "Socialstudies";
 					Intent maths = new Intent(Subjects.this, Year.class);
 					startActivity(maths);
 

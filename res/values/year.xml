@@ -2,7 +2,6 @@
 <resources>
 
     <string-array name="kcpeyear">
-        <item name="year0">Select year of exam</item>
         <item name="year1">2013</item>
         <item name="year2">2012</item>
         <item name="year3">2011</item>

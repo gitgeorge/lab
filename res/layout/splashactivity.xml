@@ -5,16 +5,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:background="@color/app_color">
-		<TextView
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:id="@+id/TextViewTopTitle"
-			android:text="@string/app_logo_top"
-			android:textColor="@color/logo_color"
-			android:layout_gravity="center_vertical"
-			android:gravity="top|center"
-			android:textSize="@dimen/logo_size">
-		</TextView>
+		
 		<TableLayout
 			android:id="@+id/TableLayout01"
 			android:stretchColumns="*"

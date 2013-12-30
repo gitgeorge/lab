@@ -74,6 +74,7 @@ public class Score extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.Button_Review:
+			finish();
 			Exam.totalAnswered = 0;
 			Exam.totalCorrectAns = 0;
 			Exam.incorectAnswers = 0;
