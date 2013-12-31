@@ -24,36 +24,38 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.msingiapp.SplashActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_header" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.msingiapp.MainMenu" >
+        <activity
+            android:name="com.msingiapp.MainMenu"
+            android:label="@string/welcome" >
         </activity>
         <activity
             android:name="com.msingiapp.Subjects"
-            android:label="@string/app_name" >
+            android:label="@string/sub" >
         </activity>
         <activity
             android:name="com.msingiapp.Year"
-            android:label="@string/app_name" >
+            android:label="@string/app_header" >
         </activity>
         <activity
             android:name="com.msingiapp.Exam"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="@string/app_name" >
+            android:label="@string/app_header" >
         </activity>
         <activity
             android:name="com.msingiapp.Score"
-            android:label="@string/app_name" >
+            android:label="@string/app_header" >
         </activity>
         <activity
             android:name="com.msingiapp.Revision"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:label="@string/app_name" >
+            android:label="@string/app_header" >
         </activity>
         <activity android:name="com.msingiapp.DatabaseHelper" >
         </activity>
@@ -61,7 +63,7 @@
         </activity>
         <activity
             android:name="com.msingiapp.Help"
-            android:label="@string/app_name" >
+            android:label="@string/app_header" >
         </activity>
     </application>
 

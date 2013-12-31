@@ -1,6 +1,8 @@
 package com.msingiapp;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.Button;
 
 public class MainMenu extends Activity implements OnClickListener {
 	Button exam, help, share, quit, about;
+	final Context context = this;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -27,18 +30,50 @@ public class MainMenu extends Activity implements OnClickListener {
 		exam.setOnClickListener(this);
 		help = (Button) findViewById(R.id.btnhelp);
 		help.setOnClickListener(this);
-		quit = (Button) findViewById(R.id.btnquit);
-		quit.setOnClickListener(this);
 		about = (Button) findViewById(R.id.btnabout);
 		about.setOnClickListener(this);
+		quit = (Button) findViewById(R.id.btnquit);
+		quit.setOnClickListener(new OnClickListener() {
 
-	}
+			@Override
+			public void onClick(View arg0) {
+				try {
 
-	@Override
-	protected void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-		finish();
+					final Dialog dialog = new Dialog(context);
+					dialog.setContentView(R.layout.appexit_dailog);
+					dialog.setTitle("MsingiPACK");
+
+					Button dialogButtonOk = (Button) dialog
+							.findViewById(R.id.dialogButtonOK);
+					// if button is clicked, close the custom dialog
+					dialogButtonOk.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							dialog.dismiss();
+							MainMenu.this.finish();
+							Intent intent = new Intent(Intent.ACTION_MAIN);
+							intent.addCategory(Intent.CATEGORY_HOME);
+							intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							startActivity(intent);
+							System.exit(0);
+						}
+					});
+					Button dialogCancel = (Button) dialog
+							.findViewById(R.id.dialogButtonCancel);
+					dialogCancel.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							// unaswredQuestions();
+							dialog.dismiss();
+						}
+					});
+					dialog.show();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	public void onClick(View v) {
@@ -55,16 +90,9 @@ public class MainMenu extends Activity implements OnClickListener {
 			Intent about = new Intent(this, About.class);
 			startActivity(about);
 			break;
-		case R.id.btnquit:
-			finish();
-			Intent intent = new Intent(Intent.ACTION_MAIN);
-			intent.addCategory(Intent.CATEGORY_HOME);
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			startActivity(intent);
-			System.exit(0);
-			break;
 
 		}
+
 	}
 
 }
