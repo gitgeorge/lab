@@ -23,8 +23,9 @@ public class Subjects extends Activity {
 		setContentView(R.layout.subjects);
 		// find view
 		String[] web = { "Mathematics", "English", "Kiswahili", "Science",
-				"SOCIAL STUDIES", "Cristian Religious Education (C.R.E)",
-				"Islamic Religious Education  (I.R.E)", "Hindu Religious Education (H.R.E)" };
+				"Social Studies", "Cristian Religious Education (C.R.E)",
+				"Islamic Religious Education  (I.R.E)",
+				"Hindu Religious Education (H.R.E)" };
 		Integer[] imageId = { R.drawable.math, R.drawable.english,
 				R.drawable.swahili, R.drawable.science,
 				R.drawable.socialstudies, R.drawable.cre, R.drawable.ire,
@@ -44,47 +45,37 @@ public class Subjects extends Activity {
 				// call various activity when item is selected in each instance
 				if (position == 0) {
 					subject = "Mathematics";
-					Intent maths = new Intent(Subjects.this, Year.class);
-					startActivity(maths);
+					loadNextIntent();
 				} else if (position == 1) {
 					subject = "English";
-					Intent maths = new Intent(Subjects.this, Year.class);
-					startActivity(maths);
-
+					loadNextIntent();
 				} else if (position == 2) {
 					subject = "Kiswahili";
-					Intent maths = new Intent(Subjects.this, Year.class);
-					startActivity(maths);
-
+					loadNextIntent();
 				} else if (position == 3) {
 					subject = "Science";
-					Intent maths = new Intent(Subjects.this, Year.class);
-					startActivity(maths);
-
+					loadNextIntent();
 				} else if (position == 4) {
 					subject = "Socialstudies";
-					Intent maths = new Intent(Subjects.this, Year.class);
-					startActivity(maths);
-
+					loadNextIntent();
 				} else if (position == 5) {
 					subject = "Cre";
-					Intent maths = new Intent(Subjects.this, Year.class);
-					startActivity(maths);
-
+					loadNextIntent();
 				} else if (position == 6) {
 					subject = "Ire";
-					Intent maths = new Intent(Subjects.this, Year.class);
-					startActivity(maths);
+					loadNextIntent();
 				} else if (position == 7) {
 					subject = "Hre";
-					Intent maths = new Intent(Subjects.this, Year.class);
-					startActivity(maths);
+					loadNextIntent();
 				}
-
 			}
-
 		});
+	}
 
+	public void loadNextIntent() {
+
+		Intent sub = new Intent(Subjects.this, Year.class);
+		startActivity(sub);
 	}
 
 }

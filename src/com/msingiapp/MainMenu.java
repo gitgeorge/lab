@@ -47,6 +47,7 @@ public class MainMenu extends Activity implements OnClickListener {
 							.findViewById(R.id.dialogButtonOK);
 					// if button is clicked, close the custom dialog
 					dialogButtonOk.setOnClickListener(new OnClickListener() {
+						@SuppressWarnings("static-access")
 						@Override
 						public void onClick(View v) {
 							dialog.dismiss();
@@ -54,6 +55,7 @@ public class MainMenu extends Activity implements OnClickListener {
 							Intent intent = new Intent(Intent.ACTION_MAIN);
 							intent.addCategory(Intent.CATEGORY_HOME);
 							intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
 							startActivity(intent);
 							System.exit(0);
 						}

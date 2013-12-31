@@ -2,6 +2,8 @@ package com.msingiapp;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Revision extends Activity implements OnClickListener {
 
@@ -19,6 +22,7 @@ public class Revision extends Activity implements OnClickListener {
 	WebView qusetRev, choiceA, choiceB, choiceC, choiceD, selected, correct,
 			explan;
 	public String ansSelected;
+	final Context context = this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +69,6 @@ public class Revision extends Activity implements OnClickListener {
 
 	public void displayFirstQuestion() {
 		// getting the elements at index 0 from database table
-
 		Exam.ex = (ExamSession) Exam.quest.get(0);
 		String quiz = Exam.ex.getQuestion();
 		String selection = Exam.ex.getSelectedAnswer();
@@ -102,11 +105,11 @@ public class Revision extends Activity implements OnClickListener {
 	public void nextRecord() {
 		number++;
 		if (number >= Exam.quest.size()) {
-			/* if user has reached the end of results, disable forward button */
-			next.setEnabled(false);
-			prev.setEnabled(true);
-			// dec by one to counter last inc
-			number--;
+			/*
+			 * if user has reached the end of results, disable forward button
+			 * next.setEnabled(false); prev.setEnabled(true); // dec by one to
+			 * counter last inc
+			 */number--;
 		} else {
 			prev.setEnabled(true);
 			Exam.ex = (ExamSession) Exam.quest.get(number);
@@ -120,6 +123,15 @@ public class Revision extends Activity implements OnClickListener {
 			choiceD.loadData(Exam.ex.getChoice4(), "text/html", "utf-8");
 			explan.loadData(Exam.ex.getExplanation(), "text/html", "utf-8");
 			ansSelected = Exam.ex.getSelectedAnswer();
+			if (number == Exam.quest.size() - 1) {
+				/*
+				 * if user has reached the end of results, disable forward
+				 * button
+				 */
+				next.setEnabled(false);
+				prev.setEnabled(true);
+				// dec by one to counter last inc
+			}
 			// handling for questions not answered
 			if (ansSelected.equals("")) {
 				selected.loadData("You did not answer the question",
@@ -132,9 +144,7 @@ public class Revision extends Activity implements OnClickListener {
 				correct.loadData("The correct answer is	" + "&nbsp;&nbsp;&nbsp"
 						+ Exam.ex.getAnswer(), "text/html", "utf-8");
 			}
-
 		}
-
 	}
 
 	public void previousRecord() {
@@ -170,9 +180,7 @@ public class Revision extends Activity implements OnClickListener {
 				correct.loadData("The correct answer is	" + "&nbsp;&nbsp;&nbsp"
 						+ Exam.ex.getAnswer(), "text/html", "utf-8");
 			}
-
 		}
-
 	}
 
 	@Override
@@ -186,9 +194,51 @@ public class Revision extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.Button_Quit:
-			finish();
-			Intent mainmenu = new Intent(Revision.this, MainMenu.class);
-			startActivity(mainmenu);
+			try {
+
+				// check if the user has gone through everyexam revision
+				if (number == Exam.quest.size() - 1) {
+					Revision.this.finish();
+					Intent mainmenu = new Intent(Revision.this, MainMenu.class);
+					startActivity(mainmenu);
+				} else if (number < Exam.quest.size() - 1) {
+
+					final Dialog dialog = new Dialog(context);
+					dialog.setContentView(R.layout.revisionfinish_dialog);
+					dialog.setTitle("Revision Session");
+
+					Button dialogButtonOk = (Button) dialog
+							.findViewById(R.id.dialogButtonOK);
+					// if button is clicked, close the custom dialog
+					dialogButtonOk.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							dialog.dismiss();
+							Revision.this.finish();
+							// clear the collection
+							Exam.quest.clear();
+							Intent finish = new Intent(Revision.this,
+									MainMenu.class);
+							startActivity(finish);
+
+						}
+					});
+					Button dialogCancel = (Button) dialog
+							.findViewById(R.id.dialogButtonCancel);
+					dialogCancel.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							// unaswredQuestions();
+							dialog.dismiss();
+						}
+					});
+					dialog.show();
+
+				}
+			} catch (Exception e) {
+				Toast.makeText(context, "error", Toast.LENGTH_LONG).show();
+			}
 			break;
 		case R.id.Button_Next:
 			nextRecord();

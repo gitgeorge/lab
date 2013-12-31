@@ -97,9 +97,12 @@ public class Year extends Activity {
 			Toast.makeText(getApplicationContext(),
 					Subjects.subject + "	exam content not ready !",
 					Toast.LENGTH_LONG).show();
+
 		} else {
+
 			Intent exam = new Intent(Year.this, Exam.class);
 			startActivity(exam);
+
 		}
 
 	}

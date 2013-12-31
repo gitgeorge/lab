@@ -76,20 +76,15 @@ public class Exam extends Activity implements OnClickListener {
 				switch (rgroup.getCheckedRadioButtonId()) {
 				case R.id.radio_AA:
 					pickedAnswer = "A";
-
 					break;
-
 				case R.id.radio_BB:
 					pickedAnswer = "B";
-
 					break;
 				case R.id.radio_CC:
 					pickedAnswer = "C";
-
 					break;
 				case R.id.radio_DD:
 					pickedAnswer = "D";
-
 					break;
 				}
 			}
@@ -151,6 +146,7 @@ public class Exam extends Activity implements OnClickListener {
 			webChoiceB.loadData(ex.getChoice2(), "text/html", "utf-8");
 			webChoiceC.loadData(ex.getChoice3(), "text/html", "utf-8");
 			webChoiceD.loadData(ex.getChoice4(), "text/html", "utf-8");
+
 			if (number == quest.size() - 1) {
 				/*
 				 * if user has reached the end of results, disable forward
@@ -186,13 +182,13 @@ public class Exam extends Activity implements OnClickListener {
 			int questNo = number + 1;
 			// displaying search record in text fields
 			ans = ex.getSelectedAnswer();
-
 			questionNo.setText("	Question	" + questNo + "	out of 50");
 			webQuest.loadData(ex.getQuestion(), "text/html", "utf-8");
 			webChoiceA.loadData(ex.getChoice1(), "text/html", "utf-8");
 			webChoiceB.loadData(ex.getChoice2(), "text/html", "utf-8");
 			webChoiceC.loadData(ex.getChoice3(), "text/html", "utf-8");
 			webChoiceD.loadData(ex.getChoice4(), "text/html", "utf-8");
+
 			// set the selected answer -1 because we are setting when nxt btn
 			// is clicked
 			ex = (ExamSession) quest.get(number + 1);
@@ -205,9 +201,7 @@ public class Exam extends Activity implements OnClickListener {
 	}
 
 	public void markExam() {
-
 		if (!ex.selectedAnswer.equals("")) {
-
 			for (int i = 0; i < quest.size(); i++) {
 				ex = (ExamSession) quest.get(i);
 				// comparing the supplied answer to the correct ans hence
@@ -290,11 +284,6 @@ public class Exam extends Activity implements OnClickListener {
 	}
 
 	public void clearRadioButtons() {
-		webQuest.reload();
-		webChoiceA.reload();
-		webChoiceB.reload();
-		webChoiceC.reload();
-		webChoiceD.reload();
 		rgroup.clearCheck();
 		pickedAnswer = "";
 
@@ -325,8 +314,6 @@ public class Exam extends Activity implements OnClickListener {
 				rgroup.check(R.id.radio_DD);
 				pickedAnswer = "D";
 			}
-			
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -344,7 +331,6 @@ public class Exam extends Activity implements OnClickListener {
 			ex.setSelectedAnswer(pickedAnswer);
 			lastSelectedAns();
 			markExam();
-
 			break;
 		case R.id.Button_Next:
 			nextRecord();
