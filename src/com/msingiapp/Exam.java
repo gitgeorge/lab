@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class Exam extends Activity implements OnClickListener {
 	TextView questionNo;
 	public RadioGroup rgroup;
 	RadioButton radioA, radioB, radioC, radioD;
+	ScrollView sv;
 	Button next, prev, quit;
 	int number = 0;
 	int questNo = number + 1;
@@ -51,6 +53,7 @@ public class Exam extends Activity implements OnClickListener {
 
 	@SuppressLint("NewApi")
 	public void initialize() {
+		sv = (ScrollView)findViewById(R.id.sv);
 		questionNo = (TextView) findViewById(R.id.tvquestionNumber1);
 		webQuest = (WebView) findViewById(R.id.quest_web_view1);
 		webQuest.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
@@ -114,7 +117,7 @@ public class Exam extends Activity implements OnClickListener {
 			String choiC = ex.getChoice3();
 			String choiD = ex.getChoice4();
 
-			questionNo.setText("	Question	" + questNo + "	out of 50");
+			questionNo.setText("	Question	" + questNo + "	out of "+ quest.size());
 			webQuest.loadData(quiz, "text/html", "utf-8");
 			webChoiceA.loadData(choiA, "text/html", "utf-8");
 			webChoiceB.loadData(choiB, "text/html", "utf-8");
@@ -140,7 +143,8 @@ public class Exam extends Activity implements OnClickListener {
 			int questNo = number + 1;
 			// displaying questions to the user
 			ans = ex.getSelectedAnswer();
-			questionNo.setText("	Question	" + questNo + "	out of 50");
+			questionNo.setText("	Question	" + questNo + "	out of "
+					+ quest.size());
 			webQuest.loadData(ex.getQuestion(), "text/html", "utf-8");
 			webChoiceA.loadData(ex.getChoice1(), "text/html", "utf-8");
 			webChoiceB.loadData(ex.getChoice2(), "text/html", "utf-8");
@@ -163,6 +167,9 @@ public class Exam extends Activity implements OnClickListener {
 			// get the picked answer at that index
 			clearRadioButtons();
 			selectedAnswer();
+
+			//request focus at the top of the scrolview
+			sv.fullScroll(ScrollView.FOCUS_UP);
 		}
 
 	}
@@ -182,7 +189,8 @@ public class Exam extends Activity implements OnClickListener {
 			int questNo = number + 1;
 			// displaying search record in text fields
 			ans = ex.getSelectedAnswer();
-			questionNo.setText("	Question	" + questNo + "	out of 50");
+			questionNo.setText("	Question	" + questNo + "	out of "
+					+ quest.size());
 			webQuest.loadData(ex.getQuestion(), "text/html", "utf-8");
 			webChoiceA.loadData(ex.getChoice1(), "text/html", "utf-8");
 			webChoiceB.loadData(ex.getChoice2(), "text/html", "utf-8");
@@ -196,6 +204,8 @@ public class Exam extends Activity implements OnClickListener {
 			// get the picked answer at that index
 			clearRadioButtons();
 			selectedAnswer();
+			//request focus at the top of the scrolview
+			sv.fullScroll(ScrollView.FOCUS_UP);
 		}
 
 	}

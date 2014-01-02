@@ -10,11 +10,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Revision extends Activity implements OnClickListener {
-
+	ScrollView sv;
 	TextView questionNo;
 	int number = 0;
 	int questNo = number + 1;
@@ -38,6 +39,7 @@ public class Revision extends Activity implements OnClickListener {
 
 	@SuppressLint("NewApi")
 	public void initialize() {
+		sv = (ScrollView) findViewById(R.id.ScrollView01);
 		questionNo = (TextView) findViewById(R.id.tvrevisonNo);
 		qusetRev = (WebView) findViewById(R.id.revison_quest_webview);
 		// setting the layer prevents the webview from flickering when
@@ -79,7 +81,8 @@ public class Revision extends Activity implements OnClickListener {
 		String choiD = Exam.ex.getChoice4();
 		String questExplan = Exam.ex.getExplanation();
 
-		questionNo.setText("	Question	" + questNo + "	out of 50");
+		questionNo.setText("	Question	" + questNo + "	out of "
+				+ Exam.quest.size());
 		qusetRev.loadData(quiz, "text/html", "utf-8");
 		choiceA.loadData(choiA, "text/html", "utf-8");
 		choiceB.loadData(choiB, "text/html", "utf-8");
@@ -115,7 +118,8 @@ public class Revision extends Activity implements OnClickListener {
 			Exam.ex = (ExamSession) Exam.quest.get(number);
 			int questNo = number + 1;
 			// displaying questions to the user
-			questionNo.setText("	Question	" + questNo + "	out of 50");
+			questionNo.setText("	Question	" + questNo + "	out of "
+					+ Exam.quest.size());
 			qusetRev.loadData(Exam.ex.getQuestion(), "text/html", "utf-8");
 			choiceA.loadData(Exam.ex.getChoice1(), "text/html", "utf-8");
 			choiceB.loadData(Exam.ex.getChoice2(), "text/html", "utf-8");
@@ -145,6 +149,8 @@ public class Revision extends Activity implements OnClickListener {
 						+ Exam.ex.getAnswer(), "text/html", "utf-8");
 			}
 		}
+		// request focus at the top of the scrolview
+		sv.fullScroll(ScrollView.FOCUS_UP);
 	}
 
 	public void previousRecord() {
@@ -160,7 +166,8 @@ public class Revision extends Activity implements OnClickListener {
 			Exam.ex = (ExamSession) Exam.quest.get(number);
 			int questNo = number + 1;
 			// displaying search record in text fields
-			questionNo.setText("	Question	" + questNo + "	out of 50");
+			questionNo.setText("	Question	" + questNo + "	out of "
+					+ Exam.quest.size());
 			qusetRev.loadData(Exam.ex.getQuestion(), "text/html", "utf-8");
 			choiceA.loadData(Exam.ex.getChoice1(), "text/html", "utf-8");
 			choiceB.loadData(Exam.ex.getChoice2(), "text/html", "utf-8");
@@ -181,6 +188,8 @@ public class Revision extends Activity implements OnClickListener {
 						+ Exam.ex.getAnswer(), "text/html", "utf-8");
 			}
 		}
+		// request focus at the top of the scrolview
+		sv.fullScroll(ScrollView.FOCUS_UP);
 	}
 
 	@Override
