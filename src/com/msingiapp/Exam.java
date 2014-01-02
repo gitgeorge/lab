@@ -331,6 +331,11 @@ public class Exam extends Activity implements OnClickListener {
 			ex.setSelectedAnswer(pickedAnswer);
 			lastSelectedAns();
 			markExam();
+			// try and insert exam details
+			/*
+			 * db.insertExamDetails(Grade.percent, Grade.grade, Grade.remarks,
+			 * Subjects.subject, Year.question_year);
+			 */
 			break;
 		case R.id.Button_Next:
 			nextRecord();

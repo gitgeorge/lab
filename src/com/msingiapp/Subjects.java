@@ -23,7 +23,7 @@ public class Subjects extends Activity {
 		setContentView(R.layout.subjects);
 		// find view
 		String[] web = { "Mathematics", "English", "Kiswahili", "Science",
-				"Social Studies", "Cristian Religious Education (C.R.E)",
+				"Social Studies", "Christian Religious Education (C.R.E)",
 				"Islamic Religious Education  (I.R.E)",
 				"Hindu Religious Education (H.R.E)" };
 		Integer[] imageId = { R.drawable.math, R.drawable.english,

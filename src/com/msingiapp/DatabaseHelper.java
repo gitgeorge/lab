@@ -187,6 +187,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 							.getColumnIndex("Explanation")));
 					// adding to questions list
 					exam.add(ex);
+					myDataBase.close();
 				} while (c.moveToNext());
 			}
 
@@ -197,4 +198,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		return exam;
 
 	}
+	/*public void insertExamDetails(int score, String grade, String remarks,
+			String exam, String examYear) {
+		try {
+			createDataBase();
+			openDataBase();
+			SQLiteDatabase db = this.getReadableDatabase();
+			ContentValues row = new ContentValues();
+
+			row.put("Score", score);
+			row.put("Grade", grade);
+			row.put("Remarks", remarks);
+			row.put("Exam", exam);
+			row.put("ExamYear", examYear);
+
+			long chk = db.insert("ExamReport", null, row);
+
+			if (chk != 0) {
+				Toast.makeText(myContext, "Record added successfully"+grade+remarks+exam+examYear,
+						Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(myContext, "Record add failed...! ",
+						Toast.LENGTH_LONG).show();
+			}
+			myDataBase.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}*/
 }
