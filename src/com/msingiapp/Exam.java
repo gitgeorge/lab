@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -51,20 +52,36 @@ public class Exam extends Activity implements OnClickListener {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	@SuppressLint("NewApi")
 	public void initialize() {
-		sv = (ScrollView)findViewById(R.id.sv);
+		sv = (ScrollView) findViewById(R.id.sv);
 		questionNo = (TextView) findViewById(R.id.tvquestionNumber1);
 		webQuest = (WebView) findViewById(R.id.quest_web_view1);
 		webQuest.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+		webQuest.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+		webQuest.getSettings().setRenderPriority(
+				WebSettings.RenderPriority.HIGH);
 		webChoiceA = (WebView) findViewById(R.id.webView1);
 		webChoiceA.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+		webQuest.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+		webQuest.getSettings().setRenderPriority(
+				WebSettings.RenderPriority.HIGH);
 		webChoiceB = (WebView) findViewById(R.id.webView2);
 		webChoiceB.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+		webChoiceB.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+		webChoiceB.getSettings().setRenderPriority(
+				WebSettings.RenderPriority.HIGH);
 		webChoiceC = (WebView) findViewById(R.id.webView3);
 		webChoiceC.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+		webChoiceC.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+		webChoiceC.getSettings().setRenderPriority(
+				WebSettings.RenderPriority.HIGH);
 		webChoiceD = (WebView) findViewById(R.id.webView4);
 		webChoiceD.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+		webChoiceD.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+		webChoiceD.getSettings().setRenderPriority(
+				WebSettings.RenderPriority.HIGH);
 		// declare radiogroup
 		rgroup = (RadioGroup) findViewById(R.id.radioGroup);
 		// declare radiobuttons
@@ -117,12 +134,18 @@ public class Exam extends Activity implements OnClickListener {
 			String choiC = ex.getChoice3();
 			String choiD = ex.getChoice4();
 
-			questionNo.setText("	Question	" + questNo + "	out of "+ quest.size());
-			webQuest.loadData(quiz, "text/html", "utf-8");
-			webChoiceA.loadData(choiA, "text/html", "utf-8");
-			webChoiceB.loadData(choiB, "text/html", "utf-8");
-			webChoiceC.loadData(choiC, "text/html", "utf-8");
-			webChoiceD.loadData(choiD, "text/html", "utf-8");
+			questionNo.setText("	Question	" + questNo + "	out of "
+					+ quest.size());
+			webQuest.loadDataWithBaseURL("file:///android_asset/", quiz,
+					"text/html", "utf-8", null);
+			webChoiceA.loadDataWithBaseURL("file:///android_asset/", choiA,
+					"text/html", "utf-8", null);
+			webChoiceB.loadDataWithBaseURL("file:///android_asset/", choiB,
+					"text/html", "utf-8", null);
+			webChoiceC.loadDataWithBaseURL("file:///android_asset/", choiC,
+					"text/html", "utf-8", null);
+			webChoiceD.loadDataWithBaseURL("file:///android_asset/", choiD,
+					"text/html", "utf-8", null);
 		}
 	}
 
@@ -145,11 +168,16 @@ public class Exam extends Activity implements OnClickListener {
 			ans = ex.getSelectedAnswer();
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ quest.size());
-			webQuest.loadData(ex.getQuestion(), "text/html", "utf-8");
-			webChoiceA.loadData(ex.getChoice1(), "text/html", "utf-8");
-			webChoiceB.loadData(ex.getChoice2(), "text/html", "utf-8");
-			webChoiceC.loadData(ex.getChoice3(), "text/html", "utf-8");
-			webChoiceD.loadData(ex.getChoice4(), "text/html", "utf-8");
+			webQuest.loadDataWithBaseURL("file:///android_asset/",
+					ex.getQuestion(), "text/html", "utf-8", null);
+			webChoiceA.loadDataWithBaseURL("file:///android_asset/",
+					ex.getChoice1(), "text/html", "utf-8", null);
+			webChoiceB.loadDataWithBaseURL("file:///android_asset/",
+					ex.getChoice2(), "text/html", "utf-8", null);
+			webChoiceC.loadDataWithBaseURL("file:///android_asset/",
+					ex.getChoice3(), "text/html", "utf-8", null);
+			webChoiceD.loadDataWithBaseURL("file:///android_asset/",
+					ex.getChoice4(), "text/html", "utf-8", null);
 
 			if (number == quest.size() - 1) {
 				/*
@@ -168,7 +196,7 @@ public class Exam extends Activity implements OnClickListener {
 			clearRadioButtons();
 			selectedAnswer();
 
-			//request focus at the top of the scrolview
+			// request focus at the top of the scrolview
 			sv.fullScroll(ScrollView.FOCUS_UP);
 		}
 
@@ -191,11 +219,16 @@ public class Exam extends Activity implements OnClickListener {
 			ans = ex.getSelectedAnswer();
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ quest.size());
-			webQuest.loadData(ex.getQuestion(), "text/html", "utf-8");
-			webChoiceA.loadData(ex.getChoice1(), "text/html", "utf-8");
-			webChoiceB.loadData(ex.getChoice2(), "text/html", "utf-8");
-			webChoiceC.loadData(ex.getChoice3(), "text/html", "utf-8");
-			webChoiceD.loadData(ex.getChoice4(), "text/html", "utf-8");
+			webQuest.loadDataWithBaseURL("file:///android_asset/",
+					ex.getQuestion(), "text/html", "utf-8", null);
+			webChoiceA.loadDataWithBaseURL("file:///android_asset/",
+					ex.getChoice1(), "text/html", "utf-8", null);
+			webChoiceB.loadDataWithBaseURL("file:///android_asset/",
+					ex.getChoice2(), "text/html", "utf-8", null);
+			webChoiceC.loadDataWithBaseURL("file:///android_asset/",
+					ex.getChoice3(), "text/html", "utf-8", null);
+			webChoiceD.loadDataWithBaseURL("file:///android_asset/",
+					ex.getChoice4(), "text/html", "utf-8", null);
 
 			// set the selected answer -1 because we are setting when nxt btn
 			// is clicked
@@ -204,7 +237,7 @@ public class Exam extends Activity implements OnClickListener {
 			// get the picked answer at that index
 			clearRadioButtons();
 			selectedAnswer();
-			//request focus at the top of the scrolview
+			// request focus at the top of the scrolview
 			sv.fullScroll(ScrollView.FOCUS_UP);
 		}
 

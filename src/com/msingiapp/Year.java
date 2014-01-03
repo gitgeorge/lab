@@ -99,9 +99,9 @@ public class Year extends Activity {
 					Toast.LENGTH_LONG).show();
 
 		} else {
-
 			Intent exam = new Intent(Year.this, Exam.class);
 			startActivity(exam);
+			Year.this.finish();
 
 		}
 

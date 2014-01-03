@@ -83,12 +83,18 @@ public class Revision extends Activity implements OnClickListener {
 
 		questionNo.setText("	Question	" + questNo + "	out of "
 				+ Exam.quest.size());
-		qusetRev.loadData(quiz, "text/html", "utf-8");
-		choiceA.loadData(choiA, "text/html", "utf-8");
-		choiceB.loadData(choiB, "text/html", "utf-8");
-		choiceC.loadData(choiC, "text/html", "utf-8");
-		choiceD.loadData(choiD, "text/html", "utf-8");
-		explan.loadData(questExplan, "text/html", "utf-8");
+		qusetRev.loadDataWithBaseURL("file:///android_asset/", quiz,
+				"text/html", "utf-8", null);
+		choiceA.loadDataWithBaseURL("file:///android_asset/", choiA,
+				"text/html", "utf-8", null);
+		choiceB.loadDataWithBaseURL("file:///android_asset/", choiB,
+				"text/html", "utf-8", null);
+		choiceC.loadDataWithBaseURL("file:///android_asset/", choiC,
+				"text/html", "utf-8", null);
+		choiceD.loadDataWithBaseURL("file:///android_asset/", choiD,
+				"text/html", "utf-8", null);
+		explan.loadDataWithBaseURL("file:///android_asset/", questExplan,
+				"text/html", "utf-8", null);
 		// handling for questions not answered
 		String j = "You did not answer the question";
 		if (selection.equals("")) {
@@ -120,12 +126,18 @@ public class Revision extends Activity implements OnClickListener {
 			// displaying questions to the user
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ Exam.quest.size());
-			qusetRev.loadData(Exam.ex.getQuestion(), "text/html", "utf-8");
-			choiceA.loadData(Exam.ex.getChoice1(), "text/html", "utf-8");
-			choiceB.loadData(Exam.ex.getChoice2(), "text/html", "utf-8");
-			choiceC.loadData(Exam.ex.getChoice3(), "text/html", "utf-8");
-			choiceD.loadData(Exam.ex.getChoice4(), "text/html", "utf-8");
-			explan.loadData(Exam.ex.getExplanation(), "text/html", "utf-8");
+			qusetRev.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getQuestion(), "text/html", "utf-8", null);
+			choiceA.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getChoice1(), "text/html", "utf-8", null);
+			choiceB.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getChoice2(), "text/html", "utf-8", null);
+			choiceC.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getChoice3(), "text/html", "utf-8", null);
+			choiceD.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getChoice4(), "text/html", "utf-8", null);
+			explan.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getExplanation(), "text/html", "utf-8", null);
 			ansSelected = Exam.ex.getSelectedAnswer();
 			if (number == Exam.quest.size() - 1) {
 				/*
@@ -168,12 +180,12 @@ public class Revision extends Activity implements OnClickListener {
 			// displaying search record in text fields
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ Exam.quest.size());
-			qusetRev.loadData(Exam.ex.getQuestion(), "text/html", "utf-8");
-			choiceA.loadData(Exam.ex.getChoice1(), "text/html", "utf-8");
-			choiceB.loadData(Exam.ex.getChoice2(), "text/html", "utf-8");
-			choiceC.loadData(Exam.ex.getChoice3(), "text/html", "utf-8");
-			choiceD.loadData(Exam.ex.getChoice4(), "text/html", "utf-8");
-			explan.loadData(Exam.ex.getExplanation(), "text/html", "utf-8");
+			qusetRev.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getQuestion(), "text/html", "utf-8",null);
+			choiceA.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getChoice1(), "text/html", "utf-8",null);
+			choiceB.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getChoice2(), "text/html", "utf-8",null);
+			choiceC.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getChoice3(), "text/html", "utf-8",null);
+			choiceD.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getChoice4(), "text/html", "utf-8",null);
+			explan.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getExplanation(), "text/html", "utf-8",null);
 			ansSelected = Exam.ex.getSelectedAnswer();
 			// handling for questions not answered
 			if (ansSelected.equals("")) {
