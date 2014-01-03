@@ -80,8 +80,6 @@ public class Grade {
 			grade = ("E");
 			remarks = "Unsatisfactory";
 		}
-		System.out.println("percentage score is :" + percentage);
-		System.out.println("grade attained :" + grade);
-		System.out.println("remarks are as follows" + remarks);
+
 	}
 }

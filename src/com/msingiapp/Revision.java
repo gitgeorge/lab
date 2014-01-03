@@ -180,12 +180,18 @@ public class Revision extends Activity implements OnClickListener {
 			// displaying search record in text fields
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ Exam.quest.size());
-			qusetRev.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getQuestion(), "text/html", "utf-8",null);
-			choiceA.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getChoice1(), "text/html", "utf-8",null);
-			choiceB.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getChoice2(), "text/html", "utf-8",null);
-			choiceC.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getChoice3(), "text/html", "utf-8",null);
-			choiceD.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getChoice4(), "text/html", "utf-8",null);
-			explan.loadDataWithBaseURL("file:///android_asset/",Exam.ex.getExplanation(), "text/html", "utf-8",null);
+			qusetRev.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getQuestion(), "text/html", "utf-8", null);
+			choiceA.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getChoice1(), "text/html", "utf-8", null);
+			choiceB.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getChoice2(), "text/html", "utf-8", null);
+			choiceC.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getChoice3(), "text/html", "utf-8", null);
+			choiceD.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getChoice4(), "text/html", "utf-8", null);
+			explan.loadDataWithBaseURL("file:///android_asset/",
+					Exam.ex.getExplanation(), "text/html", "utf-8", null);
 			ansSelected = Exam.ex.getSelectedAnswer();
 			// handling for questions not answered
 			if (ansSelected.equals("")) {
@@ -202,13 +208,6 @@ public class Revision extends Activity implements OnClickListener {
 		}
 		// request focus at the top of the scrolview
 		sv.fullScroll(ScrollView.FOCUS_UP);
-	}
-
-	@Override
-	protected void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-		finish();
 	}
 
 	@Override
@@ -269,5 +268,24 @@ public class Revision extends Activity implements OnClickListener {
 			break;
 		}
 
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		finish();
 	}
 }

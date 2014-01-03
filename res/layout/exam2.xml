@@ -47,7 +47,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="30dp" />
 
-           
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="wrap_content"
@@ -158,42 +157,56 @@
                 android:layout_below="@+id/webView3"
                 android:layout_marginTop="24dp"
                 android:layout_toRightOf="@+id/linearLayout3" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/webView4" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp" >
+
+                </TextView>
+            </LinearLayout>
+              <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="6" >
+
+        <Button
+            android:id="@+id/Button_Prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:drawableTop="@drawable/previous"
+            android:text="@string/previous" >
+        </Button>
+
+        <Button
+            android:id="@+id/Button_Next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:drawableTop="@drawable/next"
+            android:text="@string/next" >
+        </Button>
+
+        <Button
+            android:id="@+id/Button_Quit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:drawableTop="@drawable/finish"
+            android:text="@string/quit_exam" >
+        </Button>
+    </LinearLayout>
         </RelativeLayout>
     </ScrollView>
- <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:orientation="horizontal"
-                android:weightSum="6" >
 
-                <Button
-                    android:id="@+id/Button_Prev"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:drawableTop="@drawable/previous"
-                    android:text="@string/previous" >
-                </Button>
+  
 
-                <Button
-                    android:id="@+id/Button_Next"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:drawableTop="@drawable/next"
-                    android:text="@string/next" >
-                </Button>
-
-                <Button
-                    android:id="@+id/Button_Quit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:drawableTop="@drawable/finish"
-                    android:text="@string/quit_exam" >
-                </Button>
-            </LinearLayout>
-    
 </RelativeLayout>

@@ -6,7 +6,7 @@ import android.app.Activity;
 public class MainActivity extends Activity {
 	
 	
-    // Question XML Tag Names
+   /* // Question XML Tag Names
     public static final String XML_TAG_QUESTION_BLOCK = "questions";
     public static final String XML_TAG_QUESTION = "question";
     public static final String XML_TAG_QUESTION_ATTRIBUTE_NUMBER = "number";
@@ -34,6 +34,6 @@ public class MainActivity extends Activity {
 	static final int RESULT_DIALOG_ID = 2;	
 	static final int QSATP_FINISH_DIALOG_ID = 3;
 	
-	
+	*/
 	
 }

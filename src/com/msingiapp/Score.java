@@ -14,7 +14,6 @@ public class Score extends Activity implements OnClickListener {
 			remarksvalue, questionsvalue, questionsAnsvalue,
 			questionsUnansvalue, correctvalue, incorrectvalue;
 	Button review;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,7 @@ public class Score extends Activity implements OnClickListener {
 
 		correct = (TextView) findViewById(R.id.TextView_CorrectAnswers);
 		correctvalue = (TextView) findViewById(R.id.TextViewCorrectAnswers);
-		int c = (int) (Exam.totalCorrectAns);//casted to remove decimal places
+		int c = (int) (Exam.totalCorrectAns);// casted to remove decimal places
 		correctvalue.setText(String.valueOf(c));
 
 		incorrect = (TextView) findViewById(R.id.TextView_IncorrectAnswers);
@@ -86,5 +85,24 @@ public class Score extends Activity implements OnClickListener {
 
 		}
 
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		finish();
 	}
 }

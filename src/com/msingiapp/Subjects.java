@@ -73,9 +73,24 @@ public class Subjects extends Activity {
 	}
 
 	public void loadNextIntent() {
-
 		Intent sub = new Intent(Subjects.this, Year.class);
 		startActivity(sub);
+	}
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	}
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+	}
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		finish();
 	}
 
 }
