@@ -33,7 +33,7 @@ public class Exam extends Activity implements OnClickListener {
 	int number = 0;
 	int questNo = number + 1;
 	String pickedAnswer = "";
-	public static int totalAnswered = 0, incorectAnswers, totalUnaswered = 0;
+	public static int totalAnswered = 0, incorectAnswers = 0, totalUnaswered;
 	public static int totalCorrectAns = 0;
 	public static String ans;
 	final Context context = this;
@@ -52,36 +52,31 @@ public class Exam extends Activity implements OnClickListener {
 
 	}
 
-	@SuppressWarnings("deprecation")
 	@SuppressLint("NewApi")
 	public void initialize() {
+
 		sv = (ScrollView) findViewById(R.id.sv);
 		questionNo = (TextView) findViewById(R.id.tvquestionNumber1);
 		webQuest = (WebView) findViewById(R.id.quest_web_view1);
 		webQuest.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		webQuest.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-		webQuest.getSettings().setRenderPriority(
-				WebSettings.RenderPriority.HIGH);
+
 		webChoiceA = (WebView) findViewById(R.id.webView1);
 		webChoiceA.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		webQuest.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-		webQuest.getSettings().setRenderPriority(
-				WebSettings.RenderPriority.HIGH);
+
 		webChoiceB = (WebView) findViewById(R.id.webView2);
 		webChoiceB.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		webChoiceB.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-		webChoiceB.getSettings().setRenderPriority(
-				WebSettings.RenderPriority.HIGH);
+
 		webChoiceC = (WebView) findViewById(R.id.webView3);
 		webChoiceC.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		webChoiceC.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-		webChoiceC.getSettings().setRenderPriority(
-				WebSettings.RenderPriority.HIGH);
+
 		webChoiceD = (WebView) findViewById(R.id.webView4);
 		webChoiceD.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		webChoiceD.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-		webChoiceD.getSettings().setRenderPriority(
-				WebSettings.RenderPriority.HIGH);
+
 		// declare radiogroup
 		rgroup = (RadioGroup) findViewById(R.id.radioGroup);
 		// declare radiobuttons
@@ -109,14 +104,12 @@ public class Exam extends Activity implements OnClickListener {
 				}
 			}
 		});
-
 		next = (Button) findViewById(R.id.Button_Next);
 		next.setOnClickListener(this);
 		prev = (Button) findViewById(R.id.Button_Prev);
 		prev.setOnClickListener(this);
 		quit = (Button) findViewById(R.id.Button_Quit);
 		quit.setOnClickListener(this);
-
 	}
 
 	public void displayFirstQuestion() {
@@ -133,7 +126,6 @@ public class Exam extends Activity implements OnClickListener {
 			String choiB = ex.getChoice2();
 			String choiC = ex.getChoice3();
 			String choiD = ex.getChoice4();
-
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ quest.size());
 			webQuest.loadDataWithBaseURL("file:///android_asset/", quiz,
@@ -240,80 +232,73 @@ public class Exam extends Activity implements OnClickListener {
 			// request focus at the top of the scrolview
 			sv.fullScroll(ScrollView.FOCUS_UP);
 		}
-
 	}
 
 	public void markExam() {
-		if (!ex.selectedAnswer.equals("")) {
-			for (int i = 0; i < quest.size(); i++) {
-				ex = (ExamSession) quest.get(i);
-				// comparing the supplied answer to the correct ans hence
-				// incrementing
+		totalUnaswered = quest.size();
+		incorectAnswers = quest.size();
+		// if (!ex.selectedAnswer.equals("")) {
+		for (int i = 0; i < quest.size(); i++) {
+			ex = (ExamSession) quest.get(i);
+			// comparing the supplied answer to the correct ans hence
+			// incrementing
+			try {
 				if (ex.selectedAnswer.equals(ex.answer)) {
 					totalCorrectAns++;
+					int inc = quest.size() - totalCorrectAns;
+					incorectAnswers = inc;
 					// increment the value of totalUnAnswered if the question
 					// remains unanswered
 				}
 				if (!ex.getSelectedAnswer().equals("")) {
 					totalAnswered++;
-
+					int un = quest.size() - totalAnswered;
+					totalUnaswered = un;
 					// else increment the value of incorrect answers
 				}
-				if (ex.getSelectedAnswer().equals("")) {
-
-					totalUnaswered++;
-					// else increment the value of incorrect answers
-				}
-				if (!ex.selectedAnswer.equals(ex.answer)
-						|| ex.getSelectedAnswer().equals("")) {
-					incorectAnswers++;
-				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} else if (ex.selectedAnswer.equals("")) {
-
 		}
-		if (totalAnswered == 0) {
-			// reinitialize the total unanswered &incorect answers to number of
-			// questions
-			Grade.grade = "E";
-			Grade.remarks = "Unsatisfactory";
-			totalUnaswered = quest.size();
-			incorectAnswers = quest.size();
-
-			final Dialog dialog = new Dialog(context);
-			dialog.setContentView(R.layout.examfinish_dialog);
-			dialog.setTitle("Exam Session");
-
-			Button dialogButtonOk = (Button) dialog
-					.findViewById(R.id.dialogButtonOK);
-			// if button is clicked, close the custom dialog
-			dialogButtonOk.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					dialog.dismiss();
-					Intent finish = new Intent(Exam.this, Score.class);
-					startActivity(finish);
-					finish();
-				}
-			});
-			Button dialogCancel = (Button) dialog
-					.findViewById(R.id.dialogButtonCancel);
-			dialogCancel.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					// unaswredQuestions();
-					dialog.dismiss();
-				}
-			});
-			dialog.show();
-
+		if (totalAnswered < quest.size()) {
+			confirmMarking();
 		} else {
+
 			Grade.Grading(quest.size(), totalCorrectAns);
 			Intent finish = new Intent(Exam.this, Score.class);
 			startActivity(finish);
 			finish();
 		}
+	}
+
+	public void confirmMarking() {
+		final Dialog dialog = new Dialog(context);
+		dialog.setContentView(R.layout.examfinish_dialog);
+		dialog.setTitle("Exam Session");
+
+		Button dialogButtonOk = (Button) dialog
+				.findViewById(R.id.dialogButtonOK);
+		// if button is clicked, close the custom dialog
+		dialogButtonOk.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				Grade.Grading(quest.size(), totalCorrectAns);
+				Intent finish = new Intent(Exam.this, Score.class);
+				startActivity(finish);
+				finish();
+			}
+		});
+		Button dialogCancel = (Button) dialog
+				.findViewById(R.id.dialogButtonCancel);
+		dialogCancel.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		dialog.show();
 	}
 
 	// get the last selection from exam choices
@@ -368,10 +353,6 @@ public class Exam extends Activity implements OnClickListener {
 		// ex = (ExamSession) quest.get(number);
 		switch (v.getId()) {
 		case R.id.Button_Quit:
-			// set picked answer at that index incase the user exits the app
-			// without clicking on next
-			ex = (ExamSession) quest.get(number);
-			ex.setSelectedAnswer(pickedAnswer);
 			lastSelectedAns();
 			markExam();
 			// try and insert exam details
@@ -400,6 +381,7 @@ public class Exam extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onPause();
 	}
+
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub

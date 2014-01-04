@@ -112,54 +112,62 @@ public class Revision extends Activity implements OnClickListener {
 	}
 
 	public void nextRecord() {
+
 		number++;
-		if (number >= Exam.quest.size()) {
-			/*
-			 * if user has reached the end of results, disable forward button
-			 * next.setEnabled(false); prev.setEnabled(true); // dec by one to
-			 * counter last inc
-			 */number--;
-		} else {
-			prev.setEnabled(true);
-			Exam.ex = (ExamSession) Exam.quest.get(number);
-			int questNo = number + 1;
-			// displaying questions to the user
-			questionNo.setText("	Question	" + questNo + "	out of "
-					+ Exam.quest.size());
-			qusetRev.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getQuestion(), "text/html", "utf-8", null);
-			choiceA.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getChoice1(), "text/html", "utf-8", null);
-			choiceB.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getChoice2(), "text/html", "utf-8", null);
-			choiceC.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getChoice3(), "text/html", "utf-8", null);
-			choiceD.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getChoice4(), "text/html", "utf-8", null);
-			explan.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getExplanation(), "text/html", "utf-8", null);
-			ansSelected = Exam.ex.getSelectedAnswer();
-			if (number == Exam.quest.size() - 1) {
+		try {
+
+			if (number >= Exam.quest.size()) {
 				/*
 				 * if user has reached the end of results, disable forward
-				 * button
-				 */
-				next.setEnabled(false);
-				prev.setEnabled(true);
-				// dec by one to counter last inc
-			}
-			// handling for questions not answered
-			if (ansSelected.equals("")) {
-				selected.loadData("You did not answer the question",
-						"text/html", "utf-8");
-				correct.loadData("The correct answer is	" + "&nbsp;&nbsp;&nbsp"
-						+ Exam.ex.getAnswer(), "text/html", "utf-8");
+				 * button next.setEnabled(false); prev.setEnabled(true); // dec
+				 * by one to counter last inc
+				 */number--;
 			} else {
-				selected.loadData("You selected	" + "&nbsp;&nbsp;&nbsp"
-						+ Exam.ex.getSelectedAnswer(), "text/html", "utf-8");
-				correct.loadData("The correct answer is	" + "&nbsp;&nbsp;&nbsp"
-						+ Exam.ex.getAnswer(), "text/html", "utf-8");
+				prev.setEnabled(true);
+				Exam.ex = (ExamSession) Exam.quest.get(number);
+				int questNo = number + 1;
+				// displaying questions to the user
+				questionNo.setText("	Question	" + questNo + "	out of "
+						+ Exam.quest.size());
+				qusetRev.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getQuestion(), "text/html", "utf-8", null);
+				choiceA.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getChoice1(), "text/html", "utf-8", null);
+				choiceB.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getChoice2(), "text/html", "utf-8", null);
+				choiceC.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getChoice3(), "text/html", "utf-8", null);
+				choiceD.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getChoice4(), "text/html", "utf-8", null);
+				explan.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getExplanation(), "text/html", "utf-8", null);
+				ansSelected = Exam.ex.getSelectedAnswer();
+				if (number == Exam.quest.size() - 1) {
+					/*
+					 * if user has reached the end of results, disable forward
+					 * button
+					 */
+					next.setEnabled(false);
+					prev.setEnabled(true);
+					// dec by one to counter last inc
+				}
+				// handling for questions not answered
+				if (ansSelected.equals("")) {
+					selected.loadData("You did not answer the question",
+							"text/html", "utf-8");
+					correct.loadData("The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getAnswer(),
+							"text/html", "utf-8");
+				} else {
+					selected.loadData("You selected	" + "&nbsp;&nbsp;&nbsp"
+							+ Exam.ex.getSelectedAnswer(), "text/html", "utf-8");
+					correct.loadData("The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getAnswer(),
+							"text/html", "utf-8");
+				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		// request focus at the top of the scrolview
 		sv.fullScroll(ScrollView.FOCUS_UP);
@@ -167,44 +175,53 @@ public class Revision extends Activity implements OnClickListener {
 
 	public void previousRecord() {
 		number--;
-		if (number < 0) {
-			/* if user has reached the begining of results, disable back button */
-			next.setEnabled(true);
-			prev.setEnabled(false);
-			// inc by one to counter last dec
-			number++;
-		} else {
-			next.setEnabled(true);
-			Exam.ex = (ExamSession) Exam.quest.get(number);
-			int questNo = number + 1;
-			// displaying search record in text fields
-			questionNo.setText("	Question	" + questNo + "	out of "
-					+ Exam.quest.size());
-			qusetRev.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getQuestion(), "text/html", "utf-8", null);
-			choiceA.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getChoice1(), "text/html", "utf-8", null);
-			choiceB.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getChoice2(), "text/html", "utf-8", null);
-			choiceC.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getChoice3(), "text/html", "utf-8", null);
-			choiceD.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getChoice4(), "text/html", "utf-8", null);
-			explan.loadDataWithBaseURL("file:///android_asset/",
-					Exam.ex.getExplanation(), "text/html", "utf-8", null);
-			ansSelected = Exam.ex.getSelectedAnswer();
-			// handling for questions not answered
-			if (ansSelected.equals("")) {
-				selected.loadData("You did not answer the question",
-						"text/html", "utf-8");
-				correct.loadData("The correct answer is	" + "&nbsp;&nbsp;&nbsp"
-						+ Exam.ex.getAnswer(), "text/html", "utf-8");
+		try {
+			if (number < 0) {
+				/*
+				 * if user has reached the begining of results, disable back
+				 * button
+				 */
+				next.setEnabled(true);
+				prev.setEnabled(false);
+				// inc by one to counter last dec
+				number++;
 			} else {
-				selected.loadData("You selected	" + "&nbsp;&nbsp;&nbsp"
-						+ Exam.ex.getSelectedAnswer(), "text/html", "utf-8");
-				correct.loadData("The correct answer is	" + "&nbsp;&nbsp;&nbsp"
-						+ Exam.ex.getAnswer(), "text/html", "utf-8");
+				next.setEnabled(true);
+				Exam.ex = (ExamSession) Exam.quest.get(number);
+				int questNo = number + 1;
+				// displaying search record in text fields
+				questionNo.setText("	Question	" + questNo + "	out of "
+						+ Exam.quest.size());
+				qusetRev.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getQuestion(), "text/html", "utf-8", null);
+				choiceA.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getChoice1(), "text/html", "utf-8", null);
+				choiceB.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getChoice2(), "text/html", "utf-8", null);
+				choiceC.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getChoice3(), "text/html", "utf-8", null);
+				choiceD.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getChoice4(), "text/html", "utf-8", null);
+				explan.loadDataWithBaseURL("file:///android_asset/",
+						Exam.ex.getExplanation(), "text/html", "utf-8", null);
+				ansSelected = Exam.ex.getSelectedAnswer();
+				// handling for questions not answered
+				if (ansSelected.equals("")) {
+					selected.loadData("You did not answer the question",
+							"text/html", "utf-8");
+					correct.loadData("The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getAnswer(),
+							"text/html", "utf-8");
+				} else {
+					selected.loadData("You selected	" + "&nbsp;&nbsp;&nbsp"
+							+ Exam.ex.getSelectedAnswer(), "text/html", "utf-8");
+					correct.loadData("The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getAnswer(),
+							"text/html", "utf-8");
+				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		// request focus at the top of the scrolview
 		sv.fullScroll(ScrollView.FOCUS_UP);
