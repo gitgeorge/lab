@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:isScrollContainer="true"
+    android:scrollbars="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="478dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tvquestionNumber1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@android:color/white"
+                android:text="@string/question"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <WebView
+                android:id="@+id/quest_web_view1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </WebView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="40dp"
+            android:layout_height="200dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="90dp"
+            android:orientation="vertical" >
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/radio_AA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" >
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/radio_BB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" >
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/radio_CC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" >
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/radio_DD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" >
+                </RadioButton>
+            </RadioGroup>
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/linearLayout1"
+            android:layout_toRightOf="@+id/linearLayout1" >
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <WebView
+                    android:id="@+id/webView1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" >
+                </WebView>
+            </TableRow>
+
+            <TextView
+                android:id="@+id/space4"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp" />
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <WebView
+                    android:id="@+id/webView2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" >
+                </WebView>
+            </TableRow>
+
+            <TextView
+                android:id="@+id/space5"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp" />
+
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <WebView
+                    android:id="@+id/webView3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" >
+                </WebView>
+            </TableRow>
+
+            <TextView
+                android:id="@+id/space6"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp" />
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <WebView
+                    android:id="@+id/webView4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" >
+                </WebView>
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="20dp" >
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:weightSum="6" >
+
+            <Button
+                android:id="@+id/Button_Prev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:drawableTop="@drawable/previous"
+                android:text="@string/previous" >
+            </Button>
+
+            <Button
+                android:id="@+id/Button_Next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:drawableTop="@drawable/next"
+                android:text="@string/next" >
+            </Button>
+
+            <Button
+                android:id="@+id/Button_Quit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:drawableTop="@drawable/finish"
+                android:text="@string/quit_exam" >
+            </Button>
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>
