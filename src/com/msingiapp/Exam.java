@@ -128,7 +128,9 @@ public class Exam extends Activity implements OnClickListener {
 			String choiD = ex.getChoice4();
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ quest.size());
-			webQuest.loadDataWithBaseURL("file:///android_asset/", quiz,
+			String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ quiz;
+			webQuest.loadDataWithBaseURL("file:///android_asset/", htmlData,
 					"text/html", "utf-8", null);
 			webChoiceA.loadDataWithBaseURL("file:///android_asset/", choiA,
 					"text/html", "utf-8", null);
@@ -160,8 +162,10 @@ public class Exam extends Activity implements OnClickListener {
 			ans = ex.getSelectedAnswer();
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ quest.size());
-			webQuest.loadDataWithBaseURL("file:///android_asset/",
-					ex.getQuestion(), "text/html", "utf-8", null);
+			String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getQuestion();
+			webQuest.loadDataWithBaseURL("file:///android_asset/", htmlData,
+					"text/html", "utf-8", null);
 			webChoiceA.loadDataWithBaseURL("file:///android_asset/",
 					ex.getChoice1(), "text/html", "utf-8", null);
 			webChoiceB.loadDataWithBaseURL("file:///android_asset/",
@@ -211,8 +215,10 @@ public class Exam extends Activity implements OnClickListener {
 			ans = ex.getSelectedAnswer();
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ quest.size());
-			webQuest.loadDataWithBaseURL("file:///android_asset/",
-					ex.getQuestion(), "text/html", "utf-8", null);
+			String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getQuestion();
+			webQuest.loadDataWithBaseURL("file:///android_asset/", htmlData,
+					"text/html", "utf-8", null);
 			webChoiceA.loadDataWithBaseURL("file:///android_asset/",
 					ex.getChoice1(), "text/html", "utf-8", null);
 			webChoiceB.loadDataWithBaseURL("file:///android_asset/",
