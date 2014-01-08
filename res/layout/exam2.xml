@@ -6,8 +6,10 @@
 
     <ScrollView
         android:id="@+id/sv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/linearLayout2"
+        android:background="@android:color/white"
         android:isScrollContainer="true"
         android:scrollbars="vertical" >
 
@@ -39,140 +41,15 @@
                 <WebView
                     android:id="@+id/quest_web_view1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="match_parent" >
                 </WebView>
             </LinearLayout>
 
             <TextView
-                android:id="@+id/space6"
-                android:layout_width="fill_parent"
-                android:layout_height="30dp" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout3"
+                android:id="@+id/space"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linearLayout1"
-                android:layout_marginTop="28dp"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:weightSum="4" >
-
-                <RadioGroup
-                    android:id="@+id/radioGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkedButton="@+id/checkedButton" >
-
-                    <RadioButton
-                        android:id="@+id/radio_AA"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="8dp" >
-                    </TextView>
-
-                    <RadioButton
-                        android:id="@+id/radio_BB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="6dp" >
-                    </TextView>
-
-                    <RadioButton
-                        android:id="@+id/radio_CC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="6dp" >
-                    </TextView>
-
-                    <RadioButton
-                        android:id="@+id/radio_DD"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-                </RadioGroup>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="4dp" >
-            </TextView>
-
-            <WebView
-                android:id="@+id/webView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/webView1"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/webView1"
-                android:layout_marginTop="15dp"
-               />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="14dp" >
-            </TextView>
-
-            <WebView
-                android:id="@+id/webView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/webView2"
-                android:layout_below="@+id/webView2"
-                android:layout_marginTop="18dp"
-             />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="8dp" >
-            </TextView>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="20dp" >
-            </TextView>
-
-            <WebView
-                android:id="@+id/webView1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/webView4"
-                android:layout_alignParentRight="true"
-                android:layout_alignTop="@+id/linearLayout3"
-         />
-
-            <WebView
-                android:id="@+id/webView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/webView3"
-                android:layout_marginTop="24dp"
-                android:layout_toRightOf="@+id/linearLayout3"
-      />
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/webView4" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="200dp" >
-                </TextView>
-            </LinearLayout>
+                android:layout_height="20dp"
+                android:layout_below="@+id/linearLayout1" />
         </RelativeLayout>
     </ScrollView>
 

@@ -93,10 +93,10 @@ html *
 	font-size: 10px;
 }
 #image {
-	width: 40%;
-	max-width: 40%;
-	height: 40%;
-	max-height: 40%;
+	width: 50%;
+	max-width: 50%;
+	height: 25%;
+	max-height: 50%;
 	border-top-style: none;
 	border-right-style: none;
 	border-bottom-style: none;
@@ -106,3 +106,4 @@ html *
 	border-bottom-color: #FFF;
 	border-left-color: #FFF;
 }
+

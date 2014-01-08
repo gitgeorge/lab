@@ -4,11 +4,16 @@
     android:layout_height="fill_parent"
     android:background="@android:color/white" >
 
-   
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:isScrollContainer="true"
+        android:scrollbars="vertical" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -29,7 +34,7 @@
                 <WebView
                     android:id="@+id/quest_web_view1"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <TextView
@@ -68,6 +73,10 @@
                         android:layout_weight="2" />
 
                     <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/B" />
@@ -78,6 +87,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2" >
                     </RadioButton>
+
+                    <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -92,6 +105,10 @@
                     </RadioButton>
 
                     <TextView
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/D" />
@@ -102,49 +119,45 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2" />
                 </RadioGroup>
+            </LinearLayout>
 
-                <TextView
-                    android:id="@+id/space6"
-                    android:layout_width="fill_parent"
-                    android:layout_height="20dp" />
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/layout2"
+                android:orientation="horizontal"
+                android:weightSum="6" >
+
+                <Button
+                    android:id="@+id/Button_Prev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableTop="@drawable/previous"
+                    android:text="@string/previous" >
+                </Button>
+
+                <Button
+                    android:id="@+id/Button_Next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableTop="@drawable/next"
+                    android:text="@string/next" >
+                </Button>
+
+                <Button
+                    android:id="@+id/Button_Quit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableTop="@drawable/finish"
+                    android:text="@string/quit_exam" >
+                </Button>
             </LinearLayout>
         </RelativeLayout>
-   
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:weightSum="6" >
-
-        <Button
-            android:id="@+id/Button_Prev"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:drawableTop="@drawable/previous"
-            android:text="@string/previous" >
-        </Button>
-
-        <Button
-            android:id="@+id/Button_Next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:drawableTop="@drawable/next"
-            android:text="@string/next" >
-        </Button>
-
-        <Button
-            android:id="@+id/Button_Quit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:drawableTop="@drawable/finish"
-            android:text="@string/quit_exam" >
-        </Button>
-    </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

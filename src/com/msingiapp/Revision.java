@@ -20,10 +20,10 @@ public class Revision extends Activity implements OnClickListener {
 	int number = 0;
 	int questNo = number + 1;
 	Button next, prev, quit;
-	WebView qusetRev, choiceA, choiceB, choiceC, choiceD, selected, correct,
-			explan;
+	WebView qusetRev;
 	public String ansSelected;
 	final Context context = this;
+	public String selected, correct;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class Revision extends Activity implements OnClickListener {
 		View titleBar = (View) title.getParent();
 		titleBar.setBackgroundColor(getResources().getColor(
 				R.color.dark_green_color));
-		setContentView(R.layout.revision);
+		setContentView(R.layout.revision2);
 		initialize();
 	}
 
@@ -42,23 +42,8 @@ public class Revision extends Activity implements OnClickListener {
 		sv = (ScrollView) findViewById(R.id.ScrollView01);
 		questionNo = (TextView) findViewById(R.id.tvrevisonNo);
 		qusetRev = (WebView) findViewById(R.id.revison_quest_webview);
-		// setting the layer prevents the webview from flickering when
-		// dispalying the contents
 		qusetRev.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		choiceA = (WebView) findViewById(R.id.answer_web_viewA);
-		choiceA.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		choiceB = (WebView) findViewById(R.id.answer_web_viewB);
-		choiceB.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		choiceC = (WebView) findViewById(R.id.answer_web_viewC);
-		choiceC.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		choiceD = (WebView) findViewById(R.id.answer_web_viewD);
-		choiceD.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		selected = (WebView) findViewById(R.id.webselectedAns);
-		selected.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		correct = (WebView) findViewById(R.id.webcorrectAns);
-		correct.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		explan = (WebView) findViewById(R.id.explan_web_view);
-		explan.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+
 		next = (Button) findViewById(R.id.Button_Next);
 		next.setOnClickListener(this);
 		prev = (Button) findViewById(R.id.Button_Prev);
@@ -72,42 +57,57 @@ public class Revision extends Activity implements OnClickListener {
 	public void displayFirstQuestion() {
 		// getting the elements at index 0 from database table
 		Exam.ex = (ExamSession) Exam.quest.get(0);
-		String quiz = Exam.ex.getQuestion();
-		String selection = Exam.ex.getSelectedAnswer();
-		String corr = Exam.ex.getAnswer();
-		String choiA = Exam.ex.getChoice1();
-		String choiB = Exam.ex.getChoice2();
-		String choiC = Exam.ex.getChoice3();
-		String choiD = Exam.ex.getChoice4();
-		String questExplan = Exam.ex.getExplanation();
 
+		String questExplan = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				+ Exam.ex.getExplanation();
+
+		String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				+ Exam.ex.getQuestion();
+
+		String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				+ Exam.ex.getChoice1();
+
+		String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				+ Exam.ex.getChoice2();
+
+		String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				+ Exam.ex.getChoice3();
+
+		String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				+ Exam.ex.getChoice4();
+		String selection = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				+ Exam.ex.getSelectedAnswer();
+		String corr = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				+ Exam.ex.getAnswer();
+		// handling for questions not answered
+
+		if (selection.equals("")) {
+			selected = " <p id='paragraph'> You did not answer the question</p>";
+			correct = "<p id='paragraph'> The correct answer is	"
+					+ "&nbsp;&nbsp;&nbsp" + corr + "</p>";
+		} else {
+			selected = "<p id='paragraph'> You selected	" + "&nbsp;&nbsp;&nbsp"
+					+ selection + "</p>";
+			correct = "<p id='paragraph'> The correct answer is	"
+					+ "&nbsp;&nbsp;&nbsp" + corr + "</p>";
+		}
+		
 		questionNo.setText("	Question	" + questNo + "	out of "
 				+ Exam.quest.size());
-		qusetRev.loadDataWithBaseURL("file:///android_asset/", quiz,
+		qusetRev.loadDataWithBaseURL("file:///android_asset/",
+				" </p>  <p id=\"question\">" + quiz + "</p> " + "<p></p>"
+						+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
+						+ "<p></p>" + "<strong>&nbsp;B&nbsp&nbsp</strong>"
+						+ choiB + "<p></p>"
+						+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
+						+ "<p></p>" + "<strong>&nbsp;D&nbsp&nbsp</strong>"
+						+ choiD + "<p></p>"
+						+ "<strong>&nbsp;&nbsp&nbsp</strong>" + selected
+						+ "<p></p>" + "<strong>&nbsp;&nbsp&nbsp</strong>"
+						+ correct + "<p></p>"
+						+ "<strong>&nbsp;&nbsp&nbsp</strong>" + questExplan,
 				"text/html", "utf-8", null);
-		choiceA.loadDataWithBaseURL("file:///android_asset/", choiA,
-				"text/html", "utf-8", null);
-		choiceB.loadDataWithBaseURL("file:///android_asset/", choiB,
-				"text/html", "utf-8", null);
-		choiceC.loadDataWithBaseURL("file:///android_asset/", choiC,
-				"text/html", "utf-8", null);
-		choiceD.loadDataWithBaseURL("file:///android_asset/", choiD,
-				"text/html", "utf-8", null);
-		explan.loadDataWithBaseURL("file:///android_asset/", questExplan,
-				"text/html", "utf-8", null);
-		// handling for questions not answered
-		String j = "You did not answer the question";
-		if (selection.equals("")) {
-			selected.loadData(j, "text/html", "utf-8");
-			correct.loadData("The correct answer is	" + "&nbsp;&nbsp;&nbsp"
-					+ corr, "text/html", "utf-8");
-		} else {
-			selected.loadData(
-					"You selected	" + "&nbsp;&nbsp;&nbsp" + selection,
-					"text/html", "utf-8");
-			correct.loadData("The correct answer is	" + "&nbsp;&nbsp;&nbsp"
-					+ corr, "text/html", "utf-8");
-		}
+		
 
 	}
 
@@ -126,22 +126,62 @@ public class Revision extends Activity implements OnClickListener {
 				prev.setEnabled(true);
 				Exam.ex = (ExamSession) Exam.quest.get(number);
 				int questNo = number + 1;
+				String corr = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getAnswer();
+
+				String questExplan = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getExplanation();
+
+				String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getQuestion();
+
+				String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getChoice1();
+
+				String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getChoice2();
+
+				String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getChoice3();
+
+				String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getChoice4();
+				ansSelected = Exam.ex.getSelectedAnswer();
+				// handling for questions not answered
+
+				if (ansSelected.equals("")) {
+					selected = "<pid='paragraph' >You did not answer the question</p>";
+					correct = "<p id='paragraph'> The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + corr;
+				} else {
+					selected = "<p id='paragraph'> You selected	"
+							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getSelectedAnswer();
+					correct = " <p id='paragraph'> The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + corr;
+				}
+
 				// displaying questions to the user
 				questionNo.setText("	Question	" + questNo + "	out of "
 						+ Exam.quest.size());
+
 				qusetRev.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getQuestion(), "text/html", "utf-8", null);
-				choiceA.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getChoice1(), "text/html", "utf-8", null);
-				choiceB.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getChoice2(), "text/html", "utf-8", null);
-				choiceC.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getChoice3(), "text/html", "utf-8", null);
-				choiceD.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getChoice4(), "text/html", "utf-8", null);
-				explan.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getExplanation(), "text/html", "utf-8", null);
-				ansSelected = Exam.ex.getSelectedAnswer();
+						" </p>  <p id=\"question\">" + quiz + "</p> "
+								+ "<p></p>"
+								+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
+								+ "<p></p>"
+								+ "<strong>&nbsp;B&nbsp&nbsp</strong>" + choiB
+								+ "<p></p>"
+								+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
+								+ "<p></p>"
+								+ "<strong>&nbsp;D&nbsp&nbsp</strong>" + choiD
+								+ "<p></p>"
+								+ "<strong>&nbsp;&nbsp&nbsp</strong>"
+								+ selected + "<p></p>"
+								+ "<strong>&nbsp;&nbsp&nbsp</strong>" + correct
+								+ "<p></p>"
+								+ "<strong>&nbsp;&nbsp&nbsp</strong>"
+								+ questExplan, "text/html", "utf-8", null);
+
 				if (number == Exam.quest.size() - 1) {
 					/*
 					 * if user has reached the end of results, disable forward
@@ -151,20 +191,7 @@ public class Revision extends Activity implements OnClickListener {
 					prev.setEnabled(true);
 					// dec by one to counter last inc
 				}
-				// handling for questions not answered
-				if (ansSelected.equals("")) {
-					selected.loadData("You did not answer the question",
-							"text/html", "utf-8");
-					correct.loadData("The correct answer is	"
-							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getAnswer(),
-							"text/html", "utf-8");
-				} else {
-					selected.loadData("You selected	" + "&nbsp;&nbsp;&nbsp"
-							+ Exam.ex.getSelectedAnswer(), "text/html", "utf-8");
-					correct.loadData("The correct answer is	"
-							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getAnswer(),
-							"text/html", "utf-8");
-				}
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -189,36 +216,63 @@ public class Revision extends Activity implements OnClickListener {
 				next.setEnabled(true);
 				Exam.ex = (ExamSession) Exam.quest.get(number);
 				int questNo = number + 1;
-				// displaying search record in text fields
-				questionNo.setText("	Question	" + questNo + "	out of "
-						+ Exam.quest.size());
-				qusetRev.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getQuestion(), "text/html", "utf-8", null);
-				choiceA.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getChoice1(), "text/html", "utf-8", null);
-				choiceB.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getChoice2(), "text/html", "utf-8", null);
-				choiceC.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getChoice3(), "text/html", "utf-8", null);
-				choiceD.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getChoice4(), "text/html", "utf-8", null);
-				explan.loadDataWithBaseURL("file:///android_asset/",
-						Exam.ex.getExplanation(), "text/html", "utf-8", null);
+				String corr = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getAnswer();
+
+				String questExplan = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getExplanation();
+
+				String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getQuestion();
+
+				String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getChoice1();
+
+				String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getChoice2();
+
+				String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getChoice3();
+
+				String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+						+ Exam.ex.getChoice4();
+
 				ansSelected = Exam.ex.getSelectedAnswer();
 				// handling for questions not answered
+
 				if (ansSelected.equals("")) {
-					selected.loadData("You did not answer the question",
-							"text/html", "utf-8");
-					correct.loadData("The correct answer is	"
-							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getAnswer(),
-							"text/html", "utf-8");
+					selected = " <p id='paragraph'> You did not answer the question";
+					correct = " <p id='paragraph'> The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + corr;
 				} else {
-					selected.loadData("You selected	" + "&nbsp;&nbsp;&nbsp"
-							+ Exam.ex.getSelectedAnswer(), "text/html", "utf-8");
-					correct.loadData("The correct answer is	"
-							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getAnswer(),
-							"text/html", "utf-8");
+					selected = " <p id='paragraph'> You selected	"
+							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getSelectedAnswer();
+					correct = " <p id='paragraph'> The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + corr;
 				}
+
+				// displaying questions to the user
+				questionNo.setText("	Question	" + questNo + "	out of "
+						+ Exam.quest.size());
+
+				qusetRev.loadDataWithBaseURL("file:///android_asset/",
+						" </p>  <p id=\"question\">" + quiz + "</p> "
+								+ "<p></p>"
+								+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
+								+ "<p></p>"
+								+ "<strong>&nbsp;B&nbsp&nbsp</strong>" + choiB
+								+ "<p></p>"
+								+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
+								+ "<p></p>"
+								+ "<strong>&nbsp;D&nbsp&nbsp</strong>" + choiD
+								+ "<p></p>"
+								+ "<strong>&nbsp;&nbsp&nbsp</strong>"
+								+ selected + "<p></p>"
+								+ "<strong>&nbsp;&nbsp&nbsp</strong>" + correct
+								+ "<p></p>"
+								+ "<strong>&nbsp;&nbsp&nbsp</strong>"
+								+ questExplan, "text/html", "utf-8", null);
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

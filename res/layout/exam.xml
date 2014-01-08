@@ -1,149 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/RelativeLayout01"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_margin="0dp"
-    android:orientation="vertical"
-    android:padding="0dp"
-    android:shadowColor="@android:color/white" >
+    android:background="@android:color/white" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:isScrollContainer="true"
+        android:scrollbars="vertical" >
 
-        <TextView
-            android:id="@+id/tvquestionNumber1"
+        <RelativeLayout
+            android:id="@+id/RelativeLayout01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="@android:color/white"
-            android:text="@string/question"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            android:layout_margin="0dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="0dp"
+            android:shadowColor="@android:color/white" >
 
-        <WebView
-            android:id="@+id/quest_web_view1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-        </WebView>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/space5"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp" />
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp" >
-
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TableRow
-                android:id="@+id/tableRow1"
+            <LinearLayout
+                android:id="@+id/linearLayout1"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
-                <RadioButton
-                    android:id="@+id/radio_AA"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <WebView
-                    android:id="@+id/answer_web_viewA"
+                <TextView
+                    android:id="@+id/tvquestionNumber1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="30" />
-            </TableRow>
-
-            <TextView
-                android:id="@+id/space2"
-                android:layout_width="fill_parent"
-                android:layout_height="20dp" />
-
-            <TableRow
-                android:id="@+id/tableRow2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <RadioButton
-                    android:id="@+id/radio_BB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:shadowColor="@android:color/white"
+                    android:text="@string/question"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
                 <WebView
-                    android:id="@+id/answer_web_viewB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="30" />
-            </TableRow>
+                    android:id="@+id/quest_web_view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+                </WebView>
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/space3"
-                android:layout_width="fill_parent"
-                android:layout_height="20dp" />
-
-            <TableRow
-                android:id="@+id/tableRow4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <RadioButton
-                    android:id="@+id/radio_CC"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <WebView
-                    android:id="@+id/answer_web_viewC"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="30" />
-            </TableRow>
-
-            <TextView
-                android:id="@+id/space4"
-                android:layout_width="fill_parent"
-                android:layout_height="20dp" />
-
-            <TableRow
-                android:id="@+id/tableRow5"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <RadioButton
-                    android:id="@+id/radio_DD"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <WebView
-                    android:id="@+id/answer_web_viewD"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="30" />
-            </TableRow>
-
-            <TextView
-                android:id="@+id/space7"
+                android:id="@+id/space6"
                 android:layout_width="fill_parent"
                 android:layout_height="30dp" />
-        </RadioGroup>
-    </TableLayout>
 
-    <TextView
-        android:id="@+id/space6"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp" />
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout1"
+                android:layout_marginTop="28dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="4" >
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@+id/checkedButton" >
+
+                    <RadioButton
+                        android:id="@+id/radio_AA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="8dp" >
+                    </TextView>
+
+                    <RadioButton
+                        android:id="@+id/radio_BB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="6dp" >
+                    </TextView>
+
+                    <RadioButton
+                        android:id="@+id/radio_CC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="6dp" >
+                    </TextView>
+
+                    <RadioButton
+                        android:id="@+id/radio_DD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="4dp" >
+            </TextView>
+
+            <WebView
+                android:id="@+id/webView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/webView1"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/webView1"
+                android:layout_marginTop="15dp"
+               />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="14dp" >
+            </TextView>
+
+            <WebView
+                android:id="@+id/webView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/webView2"
+                android:layout_below="@+id/webView2"
+                android:layout_marginTop="18dp"
+             />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="8dp" >
+            </TextView>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="20dp" >
+            </TextView>
+
+            <WebView
+                android:id="@+id/webView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/webView4"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/linearLayout3"
+         />
+
+            <WebView
+                android:id="@+id/webView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/webView3"
+                android:layout_marginTop="24dp"
+                android:layout_toRightOf="@+id/linearLayout3"
+      />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/webView4" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="200dp" >
+                </TextView>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -155,6 +189,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:drawableTop="@drawable/previous"
             android:text="@string/previous" >
         </Button>
 
@@ -163,6 +198,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:drawableTop="@drawable/next"
             android:text="@string/next" >
         </Button>
 
@@ -171,6 +207,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:drawableTop="@drawable/finish"
             android:text="@string/quit_exam" >
         </Button>
     </LinearLayout>

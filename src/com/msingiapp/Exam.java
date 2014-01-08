@@ -24,10 +24,10 @@ public class Exam extends Activity implements OnClickListener {
 	public DatabaseHelper db = new DatabaseHelper(this);
 	public static List<ExamSession> quest;
 	public static ExamSession ex;
-	WebView webQuest, webChoiceA, webChoiceB, webChoiceC, webChoiceD;
+	WebView webQuest;/* , webChoiceA, webChoiceB, webChoiceC, webChoiceD; */
 	TextView questionNo;
 	public RadioGroup rgroup;
-	RadioButton radioA, radioB, radioC, radioD;
+	public RadioButton radioA, radioB, radioC, radioD;
 	ScrollView sv;
 	Button next, prev, quit;
 	int number = 0;
@@ -42,7 +42,7 @@ public class Exam extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.exam2);
+		setContentView(R.layout.exam3);
 		View title = getWindow().findViewById(android.R.id.title);
 		View titleBar = (View) title.getParent();
 		titleBar.setBackgroundColor(getResources().getColor(
@@ -52,7 +52,7 @@ public class Exam extends Activity implements OnClickListener {
 
 	}
 
-	@SuppressLint("NewApi")
+	@SuppressLint({ "NewApi", "SetJavaScriptEnabled" })
 	public void initialize() {
 
 		sv = (ScrollView) findViewById(R.id.sv);
@@ -60,22 +60,6 @@ public class Exam extends Activity implements OnClickListener {
 		webQuest = (WebView) findViewById(R.id.quest_web_view1);
 		webQuest.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		webQuest.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-
-		webChoiceA = (WebView) findViewById(R.id.webView1);
-		webChoiceA.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		webQuest.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-
-		webChoiceB = (WebView) findViewById(R.id.webView2);
-		webChoiceB.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		webChoiceB.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-
-		webChoiceC = (WebView) findViewById(R.id.webView3);
-		webChoiceC.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		webChoiceC.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-
-		webChoiceD = (WebView) findViewById(R.id.webView4);
-		webChoiceD.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		webChoiceD.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 
 		// declare radiogroup
 		rgroup = (RadioGroup) findViewById(R.id.radioGroup);
@@ -104,6 +88,7 @@ public class Exam extends Activity implements OnClickListener {
 				}
 			}
 		});
+
 		next = (Button) findViewById(R.id.Button_Next);
 		next.setOnClickListener(this);
 		prev = (Button) findViewById(R.id.Button_Prev);
@@ -121,26 +106,35 @@ public class Exam extends Activity implements OnClickListener {
 					.show();
 		} else {
 			ex = (ExamSession) quest.get(0);
-			String quiz = ex.getQuestion();
-			String choiA = ex.getChoice1();
-			String choiB = ex.getChoice2();
-			String choiC = ex.getChoice3();
-			String choiD = ex.getChoice4();
+
+	
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ quest.size());
-			String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ quiz;
-			webQuest.loadDataWithBaseURL("file:///android_asset/", htmlData,
-					"text/html", "utf-8", null);
-			webChoiceA.loadDataWithBaseURL("file:///android_asset/", choiA,
-					"text/html", "utf-8", null);
-			webChoiceB.loadDataWithBaseURL("file:///android_asset/", choiB,
-					"text/html", "utf-8", null);
-			webChoiceC.loadDataWithBaseURL("file:///android_asset/", choiC,
-					"text/html", "utf-8", null);
-			webChoiceD.loadDataWithBaseURL("file:///android_asset/", choiD,
-					"text/html", "utf-8", null);
+			String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getQuestion();
+			;
+			String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getChoice1();
+			;
+			String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getChoice2()
+			;
+			String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getChoice3();
+			;
+			String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+  ex.getChoice4();
+
+			webQuest.loadDataWithBaseURL("file:///android_asset/",
+					" </p>  <p id=\"question\">" + quiz + "</p> " + "<p></p>"
+							+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
+							+ "<p></p>" + "<strong>&nbsp;B&nbsp&nbsp</strong>"
+							+ choiB + "<p></p>"
+							+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
+							+ "<p></p>" + "<strong>&nbsp;D&nbsp&nbsp</strong>"
+							+ choiD, "text/html", "utf-8", null);
 		}
+
 	}
 
 	@SuppressLint("ShowToast")
@@ -164,38 +158,37 @@ public class Exam extends Activity implements OnClickListener {
 					+ quest.size());
 			String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 					+ ex.getQuestion();
-			webQuest.loadDataWithBaseURL("file:///android_asset/", htmlData,
-					"text/html", "utf-8", null);
-			webChoiceA.loadDataWithBaseURL("file:///android_asset/",
-					ex.getChoice1(), "text/html", "utf-8", null);
-			webChoiceB.loadDataWithBaseURL("file:///android_asset/",
-					ex.getChoice2(), "text/html", "utf-8", null);
-			webChoiceC.loadDataWithBaseURL("file:///android_asset/",
-					ex.getChoice3(), "text/html", "utf-8", null);
-			webChoiceD.loadDataWithBaseURL("file:///android_asset/",
-					ex.getChoice4(), "text/html", "utf-8", null);
+			webQuest.loadDataWithBaseURL(
+					"file:///android_asset/",
+					" </p>  <p id=\"question\">" + htmlData + "</p> "
+							+ "<p></p>" + "<strong>&nbsp;A&nbsp&nbsp</strong>"
+							+ ex.getChoice1() + "<p></p>"
+							+ "<strong>&nbsp;B&nbsp&nbsp</strong>"
+							+ ex.getChoice2() + "<p></p>"
+							+ "<strong>&nbsp;C&nbsp&nbsp</strong>"
+							+ ex.getChoice3() + "<p></p>"
+							+ "<strong>&nbsp;D&nbsp&nbsp</strong>"
+							+ ex.getChoice4(), "text/html", "utf-8", null);
 
-			if (number == quest.size() - 1) {
-				/*
-				 * if user has reached the end of results, disable forward
-				 * button
-				 */
-				next.setEnabled(false);
-				prev.setEnabled(true);
-				// dec by one to counter last inc
-			}
-			// set the selected answer -1 because we are setting when nxt btn
-			// is clicked
-			ex = (ExamSession) quest.get(number - 1);
-			ex.setSelectedAnswer(pickedAnswer);
-			// get the picked answer at that index
-			clearRadioButtons();
-			selectedAnswer();
-
-			// request focus at the top of the scrolview
-			sv.fullScroll(ScrollView.FOCUS_UP);
 		}
+		if (number == quest.size() - 1) {
+			/*
+			 * if user has reached the end of results, disable forward button
+			 */
+			next.setEnabled(false);
+			prev.setEnabled(true);
+			// dec by one to counter last inc
+		}
+		// set the selected answer -1 because we are setting when nxt btn
+		// is clicked
+		ex = (ExamSession) quest.get(number - 1);
+		ex.setSelectedAnswer(pickedAnswer);
+		// get the picked answer at that index
+		clearRadioButtons();
+		selectedAnswer();
 
+		// request focus at the top of the scrolview
+		sv.fullScroll(ScrollView.FOCUS_UP);
 	}
 
 	@SuppressLint("ShowToast")
@@ -217,16 +210,18 @@ public class Exam extends Activity implements OnClickListener {
 					+ quest.size());
 			String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 					+ ex.getQuestion();
-			webQuest.loadDataWithBaseURL("file:///android_asset/", htmlData,
-					"text/html", "utf-8", null);
-			webChoiceA.loadDataWithBaseURL("file:///android_asset/",
-					ex.getChoice1(), "text/html", "utf-8", null);
-			webChoiceB.loadDataWithBaseURL("file:///android_asset/",
-					ex.getChoice2(), "text/html", "utf-8", null);
-			webChoiceC.loadDataWithBaseURL("file:///android_asset/",
-					ex.getChoice3(), "text/html", "utf-8", null);
-			webChoiceD.loadDataWithBaseURL("file:///android_asset/",
-					ex.getChoice4(), "text/html", "utf-8", null);
+
+			webQuest.loadDataWithBaseURL(
+					"file:///android_asset/",
+					" </p>  <p id=\"question\">" + htmlData + "</p> "
+							+ "<p></p>" + "<strong>&nbsp;A&nbsp&nbsp</strong>"
+							+ ex.getChoice1() + "<p></p>"
+							+ "<strong>&nbsp;B&nbsp&nbsp</strong>"
+							+ ex.getChoice2() + "<p></p>"
+							+ "<strong>&nbsp;C&nbsp&nbsp</strong>"
+							+ ex.getChoice3() + "<p></p>"
+							+ "<strong>&nbsp;D&nbsp&nbsp</strong>"
+							+ ex.getChoice4(), "text/html", "utf-8", null);
 
 			// set the selected answer -1 because we are setting when nxt btn
 			// is clicked
