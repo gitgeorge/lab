@@ -39,7 +39,7 @@ public class Revision extends Activity implements OnClickListener {
 
 	@SuppressLint("NewApi")
 	public void initialize() {
-		sv = (ScrollView) findViewById(R.id.ScrollView01);
+
 		questionNo = (TextView) findViewById(R.id.tvrevisonNo);
 		qusetRev = (WebView) findViewById(R.id.revison_quest_webview);
 		qusetRev.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
@@ -98,14 +98,14 @@ public class Revision extends Activity implements OnClickListener {
 		// handling for questions not answered
 
 		if (selection.equals("")) {
-			selected = " <p id='paragraph'> You did not answer the question</p>";
-			correct = "<p id='paragraph'> The correct answer is	"
-					+ "&nbsp;&nbsp;&nbsp" + corr + "</p>";
+			selected = " <p > You did not answer the question</p>";
+			correct = "<p > The correct answer is	" + "&nbsp;&nbsp;&nbsp"
+					+ corr + "</p>";
 		} else {
-			selected = "<p id='paragraph'> You selected	" + "&nbsp;&nbsp;&nbsp"
-					+ selection + "</p>";
-			correct = "<p id='paragraph'> The correct answer is	"
-					+ "&nbsp;&nbsp;&nbsp" + corr + "</p>";
+			selected = "<p> You selected	" + "&nbsp;&nbsp;&nbsp" + selection
+					+ "</p>";
+			correct = "<p> The correct answer is	" + "&nbsp;&nbsp;&nbsp" + corr
+					+ "</p>";
 		}
 
 	}
@@ -172,13 +172,13 @@ public class Revision extends Activity implements OnClickListener {
 				// handling for questions not answered
 
 				if (ansSelected.equals("")) {
-					selected = "<pid='paragraph' >You did not answer the question</p>";
-					correct = "<p id='paragraph'> The correct answer is	"
+					selected = "<p >You did not answer the question</p>";
+					correct = "<p> The correct answer is	"
 							+ "&nbsp;&nbsp;&nbsp" + corr;
 				} else {
-					selected = "<p id='paragraph'> You selected	"
-							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getSelectedAnswer();
-					correct = " <p id='paragraph'> The correct answer is	"
+					selected = "<p> You selected	" + "&nbsp;&nbsp;&nbsp"
+							+ Exam.ex.getSelectedAnswer();
+					correct = " <p > The correct answer is	"
 							+ "&nbsp;&nbsp;&nbsp" + corr;
 				}
 
@@ -196,8 +196,7 @@ public class Revision extends Activity implements OnClickListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// request focus at the top of the scrolview
-		sv.fullScroll(ScrollView.FOCUS_UP);
+
 	}
 
 	public void previousRecord() {
@@ -277,8 +276,7 @@ public class Revision extends Activity implements OnClickListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// request focus at the top of the scrolview
-		sv.fullScroll(ScrollView.FOCUS_UP);
+
 	}
 
 	@Override

@@ -37,10 +37,12 @@
         </activity>
         <activity
             android:name="com.msingiapp.Subjects"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/sub" >
         </activity>
         <activity
             android:name="com.msingiapp.Year"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/app_header" >
         </activity>
         <activity
