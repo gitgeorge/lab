@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -52,14 +51,13 @@ public class Exam extends Activity implements OnClickListener {
 
 	}
 
-	@SuppressLint({ "NewApi", "SetJavaScriptEnabled" })
+	@SuppressLint({ "NewApi" })
 	public void initialize() {
 
-		sv = (ScrollView) findViewById(R.id.sv);
+		//sv = (ScrollView) findViewById(R.id.sv);
 		questionNo = (TextView) findViewById(R.id.tvquestionNumber1);
 		webQuest = (WebView) findViewById(R.id.quest_web_view1);
 		webQuest.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-		webQuest.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 
 		// declare radiogroup
 		rgroup = (RadioGroup) findViewById(R.id.radioGroup);
@@ -107,23 +105,22 @@ public class Exam extends Activity implements OnClickListener {
 		} else {
 			ex = (ExamSession) quest.get(0);
 
-	
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ quest.size());
 			String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 					+ ex.getQuestion();
-			;
+
 			String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 					+ ex.getChoice1();
-			;
+
 			String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice2()
-			;
+					+ ex.getChoice2();
+
 			String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 					+ ex.getChoice3();
-			;
+
 			String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+  ex.getChoice4();
+					+ ex.getChoice4();
 
 			webQuest.loadDataWithBaseURL("file:///android_asset/",
 					" </p>  <p id=\"question\">" + quiz + "</p> " + "<p></p>"
@@ -137,7 +134,6 @@ public class Exam extends Activity implements OnClickListener {
 
 	}
 
-	@SuppressLint("ShowToast")
 	public void nextRecord() {
 		number++;
 		if (number == quest.size()) {
@@ -156,19 +152,36 @@ public class Exam extends Activity implements OnClickListener {
 			ans = ex.getSelectedAnswer();
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ quest.size());
-			String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 					+ ex.getQuestion();
-			webQuest.loadDataWithBaseURL(
-					"file:///android_asset/",
-					" </p>  <p id=\"question\">" + htmlData + "</p> "
-							+ "<p></p>" + "<strong>&nbsp;A&nbsp&nbsp</strong>"
-							+ ex.getChoice1() + "<p></p>"
-							+ "<strong>&nbsp;B&nbsp&nbsp</strong>"
-							+ ex.getChoice2() + "<p></p>"
-							+ "<strong>&nbsp;C&nbsp&nbsp</strong>"
-							+ ex.getChoice3() + "<p></p>"
-							+ "<strong>&nbsp;D&nbsp&nbsp</strong>"
-							+ ex.getChoice4(), "text/html", "utf-8", null);
+
+			String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getChoice1();
+
+			String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getChoice2();
+
+			String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getChoice3();
+
+			String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getChoice4();
+			try {
+
+				webQuest.loadDataWithBaseURL("file:///android_asset/",
+						" </p>  <p id=\"question\">" + quiz + "</p> "
+								+ "<p></p>"
+								+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
+								+ "<p></p>"
+								+ "<strong>&nbsp;B&nbsp&nbsp</strong>" + choiB
+								+ "<p></p>"
+								+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
+								+ "<p></p>"
+								+ "<strong>&nbsp;D&nbsp&nbsp</strong>" + choiD,
+						"text/html", "utf-8", null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		}
 		if (number == quest.size() - 1) {
@@ -188,10 +201,9 @@ public class Exam extends Activity implements OnClickListener {
 		selectedAnswer();
 
 		// request focus at the top of the scrolview
-		sv.fullScroll(ScrollView.FOCUS_UP);
+		//sv.fullScroll(ScrollView.FOCUS_UP);
 	}
 
-	@SuppressLint("ShowToast")
 	public void previousRecord() {
 		number--;
 		if (number < 0) {
@@ -208,20 +220,36 @@ public class Exam extends Activity implements OnClickListener {
 			ans = ex.getSelectedAnswer();
 			questionNo.setText("	Question	" + questNo + "	out of "
 					+ quest.size());
-			String htmlData = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 					+ ex.getQuestion();
 
-			webQuest.loadDataWithBaseURL(
-					"file:///android_asset/",
-					" </p>  <p id=\"question\">" + htmlData + "</p> "
-							+ "<p></p>" + "<strong>&nbsp;A&nbsp&nbsp</strong>"
-							+ ex.getChoice1() + "<p></p>"
-							+ "<strong>&nbsp;B&nbsp&nbsp</strong>"
-							+ ex.getChoice2() + "<p></p>"
-							+ "<strong>&nbsp;C&nbsp&nbsp</strong>"
-							+ ex.getChoice3() + "<p></p>"
-							+ "<strong>&nbsp;D&nbsp&nbsp</strong>"
-							+ ex.getChoice4(), "text/html", "utf-8", null);
+			String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getChoice1();
+
+			String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getChoice2();
+
+			String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getChoice3();
+
+			String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+					+ ex.getChoice4();
+			try {
+
+				webQuest.loadDataWithBaseURL("file:///android_asset/",
+						" </p>  <p id=\"question\">" + quiz + "</p> "
+								+ "<p></p>"
+								+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
+								+ "<p></p>"
+								+ "<strong>&nbsp;B&nbsp&nbsp</strong>" + choiB
+								+ "<p></p>"
+								+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
+								+ "<p></p>"
+								+ "<strong>&nbsp;D&nbsp&nbsp</strong>" + choiD,
+						"text/html", "utf-8", null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 			// set the selected answer -1 because we are setting when nxt btn
 			// is clicked
@@ -230,8 +258,7 @@ public class Exam extends Activity implements OnClickListener {
 			// get the picked answer at that index
 			clearRadioButtons();
 			selectedAnswer();
-			// request focus at the top of the scrolview
-			sv.fullScroll(ScrollView.FOCUS_UP);
+			
 		}
 	}
 

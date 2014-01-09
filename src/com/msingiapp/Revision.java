@@ -79,19 +79,7 @@ public class Revision extends Activity implements OnClickListener {
 				+ Exam.ex.getSelectedAnswer();
 		String corr = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 				+ Exam.ex.getAnswer();
-		// handling for questions not answered
 
-		if (selection.equals("")) {
-			selected = " <p id='paragraph'> You did not answer the question</p>";
-			correct = "<p id='paragraph'> The correct answer is	"
-					+ "&nbsp;&nbsp;&nbsp" + corr + "</p>";
-		} else {
-			selected = "<p id='paragraph'> You selected	" + "&nbsp;&nbsp;&nbsp"
-					+ selection + "</p>";
-			correct = "<p id='paragraph'> The correct answer is	"
-					+ "&nbsp;&nbsp;&nbsp" + corr + "</p>";
-		}
-		
 		questionNo.setText("	Question	" + questNo + "	out of "
 				+ Exam.quest.size());
 		qusetRev.loadDataWithBaseURL("file:///android_asset/",
@@ -107,7 +95,18 @@ public class Revision extends Activity implements OnClickListener {
 						+ correct + "<p></p>"
 						+ "<strong>&nbsp;&nbsp&nbsp</strong>" + questExplan,
 				"text/html", "utf-8", null);
-		
+		// handling for questions not answered
+
+		if (selection.equals("")) {
+			selected = " <p id='paragraph'> You did not answer the question</p>";
+			correct = "<p id='paragraph'> The correct answer is	"
+					+ "&nbsp;&nbsp;&nbsp" + corr + "</p>";
+		} else {
+			selected = "<p id='paragraph'> You selected	" + "&nbsp;&nbsp;&nbsp"
+					+ selection + "</p>";
+			correct = "<p id='paragraph'> The correct answer is	"
+					+ "&nbsp;&nbsp;&nbsp" + corr + "</p>";
+		}
 
 	}
 
@@ -147,18 +146,6 @@ public class Revision extends Activity implements OnClickListener {
 				String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 						+ Exam.ex.getChoice4();
 				ansSelected = Exam.ex.getSelectedAnswer();
-				// handling for questions not answered
-
-				if (ansSelected.equals("")) {
-					selected = "<pid='paragraph' >You did not answer the question</p>";
-					correct = "<p id='paragraph'> The correct answer is	"
-							+ "&nbsp;&nbsp;&nbsp" + corr;
-				} else {
-					selected = "<p id='paragraph'> You selected	"
-							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getSelectedAnswer();
-					correct = " <p id='paragraph'> The correct answer is	"
-							+ "&nbsp;&nbsp;&nbsp" + corr;
-				}
 
 				// displaying questions to the user
 				questionNo.setText("	Question	" + questNo + "	out of "
@@ -181,6 +168,19 @@ public class Revision extends Activity implements OnClickListener {
 								+ "<p></p>"
 								+ "<strong>&nbsp;&nbsp&nbsp</strong>"
 								+ questExplan, "text/html", "utf-8", null);
+
+				// handling for questions not answered
+
+				if (ansSelected.equals("")) {
+					selected = "<pid='paragraph' >You did not answer the question</p>";
+					correct = "<p id='paragraph'> The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + corr;
+				} else {
+					selected = "<p id='paragraph'> You selected	"
+							+ "&nbsp;&nbsp;&nbsp" + Exam.ex.getSelectedAnswer();
+					correct = " <p id='paragraph'> The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + corr;
+				}
 
 				if (number == Exam.quest.size() - 1) {
 					/*
