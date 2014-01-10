@@ -58,6 +58,7 @@ public class Exam extends Activity implements OnClickListener {
 		questionNo = (TextView) findViewById(R.id.tvquestionNumber1);
 		webQuest = (WebView) findViewById(R.id.quest_web_view1);
 		webQuest.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+		webQuest.getSettings().setBuiltInZoomControls(true);
 		//webQuest.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 		//webQuest.setInitialScale(1);
 		//webQuest.getSettings().setLoadWithOverviewMode(true);
