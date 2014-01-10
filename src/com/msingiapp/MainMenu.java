@@ -51,13 +51,13 @@ public class MainMenu extends Activity implements OnClickListener {
 						@Override
 						public void onClick(View v) {
 							dialog.dismiss();
-							MainMenu.this.finish();
+							System.exit(0);
 							Intent intent = new Intent(Intent.ACTION_MAIN);
 							intent.addCategory(Intent.CATEGORY_HOME);
 							intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 							intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
 							startActivity(intent);
-							System.exit(0);
+
 						}
 					});
 					Button dialogCancel = (Button) dialog

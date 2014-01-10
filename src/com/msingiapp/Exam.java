@@ -23,7 +23,7 @@ public class Exam extends Activity implements OnClickListener {
 	public DatabaseHelper db = new DatabaseHelper(this);
 	public static List<ExamSession> quest;
 	public static ExamSession ex;
-	WebView webQuest;/* , webChoiceA, webChoiceB, webChoiceC, webChoiceD; */
+	WebView webQuest;
 	TextView questionNo;
 	public RadioGroup rgroup;
 	public RadioButton radioA, radioB, radioC, radioD;
@@ -36,6 +36,7 @@ public class Exam extends Activity implements OnClickListener {
 	public static int totalCorrectAns = 0;
 	public static String ans;
 	final Context context = this;
+	public static String selected = "", correct = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,16 +55,16 @@ public class Exam extends Activity implements OnClickListener {
 	@SuppressLint({ "NewApi" })
 	public void initialize() {
 
-		//sv = (ScrollView) findViewById(R.id.sv);
+		// sv = (ScrollView) findViewById(R.id.sv);
 		questionNo = (TextView) findViewById(R.id.tvquestionNumber1);
 		webQuest = (WebView) findViewById(R.id.quest_web_view1);
 		webQuest.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		webQuest.getSettings().setBuiltInZoomControls(true);
-		//webQuest.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-		//webQuest.setInitialScale(1);
-		//webQuest.getSettings().setLoadWithOverviewMode(true);
-		//webQuest.getSettings().setUseWideViewPort(true);
-		
+		// webQuest.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+		// webQuest.setInitialScale(1);
+		// webQuest.getSettings().setLoadWithOverviewMode(true);
+		// webQuest.getSettings().setUseWideViewPort(true);
+
 		// declare radiogroup
 		rgroup = (RadioGroup) findViewById(R.id.radioGroup);
 		// declare radiobuttons
@@ -87,6 +88,9 @@ public class Exam extends Activity implements OnClickListener {
 					break;
 				case R.id.radio_DD:
 					pickedAnswer = "D";
+					break;
+				default:
+					pickedAnswer = "";
 					break;
 				}
 			}
@@ -206,7 +210,7 @@ public class Exam extends Activity implements OnClickListener {
 		selectedAnswer();
 
 		// request focus at the top of the scrolview
-		//sv.fullScroll(ScrollView.FOCUS_UP);
+		// sv.fullScroll(ScrollView.FOCUS_UP);
 	}
 
 	public void previousRecord() {
@@ -263,7 +267,7 @@ public class Exam extends Activity implements OnClickListener {
 			// get the picked answer at that index
 			clearRadioButtons();
 			selectedAnswer();
-			
+
 		}
 	}
 
@@ -377,6 +381,27 @@ public class Exam extends Activity implements OnClickListener {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+
+	}
+
+	public static void reviewAnswers(int index) {
+
+		String ansSelected, correctAns;
+
+		ex = (ExamSession) quest.get(index);
+		ansSelected = ex.getSelectedAnswer();
+		correctAns = ex.getAnswer();
+		// handling for questions not answered
+		if (ansSelected.equals("")) {
+			selected = "<p >You did not answer the question</p>";
+			correct = "<p> The correct answer is	" + "&nbsp;&nbsp;&nbsp"
+					+ correctAns;
+		} else if (!ansSelected.equals("")) {
+			selected = "<p> You selected:	" + "&nbsp;&nbsp;&nbsp" + ansSelected;
+			correct = " <p > The correct answer is	" + "&nbsp;&nbsp;&nbsp"
+					+ correctAns;
+
 		}
 
 	}
