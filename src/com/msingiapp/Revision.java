@@ -33,7 +33,7 @@ public class Revision extends Activity implements OnClickListener {
 		View titleBar = (View) title.getParent();
 		titleBar.setBackgroundColor(getResources().getColor(
 				R.color.dark_green_color));
-		setContentView(R.layout.revision2);
+		setContentView(R.layout.revision);
 		initialize();
 	}
 
@@ -126,12 +126,7 @@ public class Revision extends Activity implements OnClickListener {
 				prev.setEnabled(true);
 				Exam.ex = (ExamSession) Exam.quest.get(number);
 				int questNo = number + 1;
-				/*
-				 * String corr =
-				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-				 * + Exam.ex.getAnswer()
-				 */;
-
+			
 				String questExplan = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 						+ Exam.ex.getExplanation();
 

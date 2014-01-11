@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Year extends Activity {
 	public static String question_year;
@@ -94,10 +93,6 @@ public class Year extends Activity {
 	public void checkDatabase() {
 		List<ExamSession> examQuestion = db.getAllQusetions();
 		if (examQuestion.isEmpty()) {
-			Toast.makeText(getApplicationContext(),
-					Subjects.subject + "	exam content not ready !",
-					Toast.LENGTH_LONG).show();
-
 		} else {
 			Intent exam = new Intent(Year.this, Exam.class);
 			startActivity(exam);

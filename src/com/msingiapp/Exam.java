@@ -42,7 +42,7 @@ public class Exam extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.exam3);
+		setContentView(R.layout.exam);
 		View title = getWindow().findViewById(android.R.id.title);
 		View titleBar = (View) title.getParent();
 		titleBar.setBackgroundColor(getResources().getColor(
@@ -55,16 +55,11 @@ public class Exam extends Activity implements OnClickListener {
 	@SuppressLint({ "NewApi" })
 	public void initialize() {
 
-		// sv = (ScrollView) findViewById(R.id.sv);
 		questionNo = (TextView) findViewById(R.id.tvquestionNumber1);
 		webQuest = (WebView) findViewById(R.id.quest_web_view1);
 		webQuest.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		webQuest.getSettings().setBuiltInZoomControls(true);
-		// webQuest.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-		// webQuest.setInitialScale(1);
-		// webQuest.getSettings().setLoadWithOverviewMode(true);
-		// webQuest.getSettings().setUseWideViewPort(true);
-
+		
 		// declare radiogroup
 		rgroup = (RadioGroup) findViewById(R.id.radioGroup);
 		// declare radiobuttons
@@ -208,9 +203,6 @@ public class Exam extends Activity implements OnClickListener {
 		// get the picked answer at that index
 		clearRadioButtons();
 		selectedAnswer();
-
-		// request focus at the top of the scrolview
-		// sv.fullScroll(ScrollView.FOCUS_UP);
 	}
 
 	public void previousRecord() {
@@ -408,7 +400,6 @@ public class Exam extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// ex = (ExamSession) quest.get(number);
 		switch (v.getId()) {
 		case R.id.Button_Quit:
 			lastSelectedAns();

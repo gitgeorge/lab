@@ -51,6 +51,7 @@ public class MainMenu extends Activity implements OnClickListener {
 						@Override
 						public void onClick(View v) {
 							dialog.dismiss();
+							finish();
 							System.exit(0);
 							Intent intent = new Intent(Intent.ACTION_MAIN);
 							intent.addCategory(Intent.CATEGORY_HOME);
@@ -66,7 +67,6 @@ public class MainMenu extends Activity implements OnClickListener {
 
 						@Override
 						public void onClick(View v) {
-							// unaswredQuestions();
 							dialog.dismiss();
 						}
 					});
