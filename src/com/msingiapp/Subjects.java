@@ -73,8 +73,9 @@ public class Subjects extends Activity {
 	}
 
 	public void loadNextIntent() {
-		Intent sub = new Intent(Subjects.this, Year.class);
+		Intent sub = new Intent(Subjects.this, Year.class);		
 		startActivity(sub);
+		finish();
 	}
 	@Override
 	protected void onResume() {

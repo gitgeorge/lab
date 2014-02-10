@@ -158,16 +158,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	}
 
+	public List<String> getYears() {
+		List<String> years = new ArrayList<String>();
+		try {
+			createDataBase();
+			openDataBase();
+			SQLiteDatabase db = this.getReadableDatabase();
+			// Select All Query
+			String selectQuery = "SELECT *   FROM " + Subjects.subject
+					+ " WHERE Question_no='1' ORDER BY Question_Year desc ";
+			System.out.println(selectQuery);
+
+			Cursor cursor = db.rawQuery(selectQuery, null);
+
+			// looping through all rows and adding to list
+			if (cursor.moveToFirst()) {
+				do {
+					years.add(cursor.getString(2));
+				} while (cursor.moveToNext());
+			}
+
+			// closing connection
+			cursor.close();
+			db.close();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		// returning lables
+		return years;
+
+	}
+
 	public List<ExamSession> getAllQusetions() throws SQLiteException {
 		List<ExamSession> exam = new ArrayList<ExamSession>();
 		try {
-			createDataBase();
+
 			openDataBase();
 
 			SQLiteDatabase db = this.getReadableDatabase();
 			String selectQuery = "   SELECT *  FROM " + Subjects.subject
 					+ " where Question_year=" + Year.question_year + "    ";
+
 			Cursor c = db.rawQuery(selectQuery, null);
+
 			// looping through all rows and adding to list
 			if (c.moveToFirst()) {
 				do {
@@ -176,6 +210,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 					ex.setQuestion_no(c.getInt(c.getColumnIndex("Question_no")));
 					ex.setQuestion_year(c.getString(c
 							.getColumnIndex("Question_year")));
+
 					ex.setQuestion(c.getString(c.getColumnIndex("Question")));
 					ex.setChoice1(c.getString(c.getColumnIndex("Choice1")));
 					ex.setChoice2(c.getString(c.getColumnIndex("Choice2")));
@@ -190,40 +225,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 					myDataBase.close();
 				} while (c.moveToNext());
 			}
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		return exam;
 
 	}
-	/*public void insertExamDetails(int score, String grade, String remarks,
-			String exam, String examYear) {
-		try {
-			createDataBase();
-			openDataBase();
-			SQLiteDatabase db = this.getReadableDatabase();
-			ContentValues row = new ContentValues();
-
-			row.put("Score", score);
-			row.put("Grade", grade);
-			row.put("Remarks", remarks);
-			row.put("Exam", exam);
-			row.put("ExamYear", examYear);
-
-			long chk = db.insert("ExamReport", null, row);
-
-			if (chk != 0) {
-				Toast.makeText(myContext, "Record added successfully"+grade+remarks+exam+examYear,
-						Toast.LENGTH_LONG).show();
-			} else {
-				Toast.makeText(myContext, "Record add failed...! ",
-						Toast.LENGTH_LONG).show();
-			}
-			myDataBase.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}*/
+	/*
+	 * public void insertExamDetails(int score, String grade, String remarks,
+	 * String exam, String examYear) { try { createDataBase(); openDataBase();
+	 * SQLiteDatabase db = this.getReadableDatabase(); ContentValues row = new
+	 * ContentValues();
+	 * 
+	 * row.put("Score", score); row.put("Grade", grade); row.put("Remarks",
+	 * remarks); row.put("Exam", exam); row.put("ExamYear", examYear);
+	 * 
+	 * long chk = db.insert("ExamReport", null, row);
+	 * 
+	 * if (chk != 0) { Toast.makeText(myContext,
+	 * "Record added successfully"+grade+remarks+exam+examYear,
+	 * Toast.LENGTH_LONG).show(); } else { Toast.makeText(myContext,
+	 * "Record add failed...! ", Toast.LENGTH_LONG).show(); }
+	 * myDataBase.close(); } catch (Exception e) { e.printStackTrace(); } }
+	 */
 }

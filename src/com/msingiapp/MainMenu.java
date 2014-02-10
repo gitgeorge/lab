@@ -42,6 +42,7 @@ public class MainMenu extends Activity implements OnClickListener {
 					final Dialog dialog = new Dialog(context);
 					dialog.setContentView(R.layout.appexit_dailog);
 					dialog.setTitle("MsingiPACK");
+					dialog.setCanceledOnTouchOutside(false);
 
 					Button dialogButtonOk = (Button) dialog
 							.findViewById(R.id.dialogButtonOK);
@@ -51,8 +52,7 @@ public class MainMenu extends Activity implements OnClickListener {
 						@Override
 						public void onClick(View v) {
 							dialog.dismiss();
-							finish();
-							System.exit(0);
+							MainMenu.this.finish();
 							Intent intent = new Intent(Intent.ACTION_MAIN);
 							intent.addCategory(Intent.CATEGORY_HOME);
 							intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

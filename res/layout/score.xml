@@ -53,7 +53,6 @@
                     android:layout_height="wrap_content"
                     android:layout_span="6"
                     android:gravity="center"
-                    android:text="@string/exam"
                     android:textSize="@dimen/result_header2_size"
                     android:textStyle="bold"
                     android:typeface="serif" >

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Score extends Activity implements OnClickListener {
-	TextView text, score, grade, remarks, questions, questionsAns,
+	TextView text,examSubject, score, grade, remarks, questions, questionsAns,
 			questionsUnans, correct, incorrect, scorevalue, gradevalue,
 			remarksvalue, questionsvalue, questionsAnsvalue,
 			questionsUnansvalue, correctvalue, incorrectvalue;
@@ -31,6 +31,9 @@ public class Score extends Activity implements OnClickListener {
 	}
 
 	private void initialize() {
+		examSubject = (TextView )findViewById(R.id.TextViewExam);
+		examSubject.setText(Subjects.subject);
+		
 		score = (TextView) findViewById(R.id.TextView_PercentageScore);
 		scorevalue = (TextView) findViewById(R.id.TextViewPercentageScore);
 		scorevalue.setText("	" + Grade.percent + " % ");

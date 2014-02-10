@@ -59,7 +59,7 @@ public class Exam extends Activity implements OnClickListener {
 		webQuest = (WebView) findViewById(R.id.quest_web_view1);
 		webQuest.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		webQuest.getSettings().setBuiltInZoomControls(true);
-		
+
 		// declare radiogroup
 		rgroup = (RadioGroup) findViewById(R.id.radioGroup);
 		// declare radiobuttons
@@ -109,7 +109,7 @@ public class Exam extends Activity implements OnClickListener {
 		} else {
 			ex = (ExamSession) quest.get(0);
 
-			questionNo.setText("	Question	" + questNo + "	out of "
+			questionNo.setText("	Question	    " + questNo + "	out of "
 					+ quest.size());
 			String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 					+ ex.getQuestion();
@@ -134,6 +134,7 @@ public class Exam extends Activity implements OnClickListener {
 							+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
 							+ "<p></p>" + "<strong>&nbsp;D&nbsp&nbsp</strong>"
 							+ choiD, "text/html", "utf-8", null);
+
 		}
 
 	}
@@ -154,7 +155,7 @@ public class Exam extends Activity implements OnClickListener {
 			int questNo = number + 1;
 			// displaying questions to the user
 			ans = ex.getSelectedAnswer();
-			questionNo.setText("	Question	" + questNo + "	out of "
+			questionNo.setText("	Question	    " + questNo + "	out of "
 					+ quest.size());
 			String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 					+ ex.getQuestion();
@@ -183,6 +184,7 @@ public class Exam extends Activity implements OnClickListener {
 								+ "<p></p>"
 								+ "<strong>&nbsp;D&nbsp&nbsp</strong>" + choiD,
 						"text/html", "utf-8", null);
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -219,7 +221,7 @@ public class Exam extends Activity implements OnClickListener {
 			int questNo = number + 1;
 			// displaying search record in text fields
 			ans = ex.getSelectedAnswer();
-			questionNo.setText("	Question	" + questNo + "	out of "
+			questionNo.setText("	Question	    " + questNo + "	out of "
 					+ quest.size());
 			String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
 					+ ex.getQuestion();
@@ -248,6 +250,7 @@ public class Exam extends Activity implements OnClickListener {
 								+ "<p></p>"
 								+ "<strong>&nbsp;D&nbsp&nbsp</strong>" + choiD,
 						"text/html", "utf-8", null);
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -304,6 +307,7 @@ public class Exam extends Activity implements OnClickListener {
 		final Dialog dialog = new Dialog(context);
 		dialog.setContentView(R.layout.examfinish_dialog);
 		dialog.setTitle("Exam Session");
+		dialog.setCanceledOnTouchOutside(false);
 
 		Button dialogButtonOk = (Button) dialog
 				.findViewById(R.id.dialogButtonOK);

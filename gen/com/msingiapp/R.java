@@ -14,7 +14,6 @@ public final class R {
         public static final int fade_in2=0x7f040002;
     }
     public static final class array {
-        public static final int kcpeyear=0x7f0a0001;
         public static final int subjects=0x7f0a0000;
     }
     public static final class attr {
@@ -73,24 +72,27 @@ public final class R {
     public static final class drawable {
         public static final int about=0x7f020000;
         public static final int arrow=0x7f020001;
-        public static final int button_cancel=0x7f020002;
-        public static final int cre=0x7f020003;
-        public static final int english=0x7f020004;
-        public static final int exam=0x7f020005;
-        public static final int exit=0x7f020006;
-        public static final int finish=0x7f020007;
-        public static final int help=0x7f020008;
-        public static final int hre=0x7f020009;
-        public static final int ic_launcher=0x7f02000a;
-        public static final int ire=0x7f02000b;
-        public static final int math=0x7f02000c;
-        public static final int msingipack1=0x7f02000d;
-        public static final int next=0x7f02000e;
-        public static final int ok=0x7f02000f;
-        public static final int previous=0x7f020010;
-        public static final int science=0x7f020011;
-        public static final int socialstudies=0x7f020012;
-        public static final int swahili=0x7f020013;
+        public static final int back=0x7f020002;
+        public static final int background=0x7f020003;
+        public static final int bck=0x7f020004;
+        public static final int button_cancel=0x7f020005;
+        public static final int cre=0x7f020006;
+        public static final int english=0x7f020007;
+        public static final int exam=0x7f020008;
+        public static final int exit=0x7f020009;
+        public static final int finish=0x7f02000a;
+        public static final int help=0x7f02000b;
+        public static final int hre=0x7f02000c;
+        public static final int ic_launcher=0x7f02000d;
+        public static final int ire=0x7f02000e;
+        public static final int math=0x7f02000f;
+        public static final int msingipack1=0x7f020010;
+        public static final int next=0x7f020011;
+        public static final int ok=0x7f020012;
+        public static final int previous=0x7f020013;
+        public static final int science=0x7f020014;
+        public static final int socialstudies=0x7f020015;
+        public static final int swahili=0x7f020016;
     }
     public static final class id {
         public static final int Button_Next=0x7f0c0015;

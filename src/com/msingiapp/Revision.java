@@ -87,7 +87,7 @@ public class Revision extends Activity implements OnClickListener {
 			correct = "<p > The correct answer is	" + "&nbsp;&nbsp;&nbsp"
 					+ corr + "</p>";
 		} else if (!ansSelected.equals("")) {
-			selected = "<p> You selected::::	" + "&nbsp;&nbsp;&nbsp"
+			selected = "<p> You selected	" + "&nbsp;&nbsp;&nbsp"
 					+ ansSelected + "</p>";
 			correct = "<p> The correct answer is	" + "&nbsp;&nbsp;&nbsp" + corr
 					+ "</p>";
@@ -154,7 +154,7 @@ public class Revision extends Activity implements OnClickListener {
 						selected = "<p >You did not answer the question</p>";
 
 					} else if (!ansSelected.equals("")) {
-						selected = "<p> You selected:	" + "&nbsp;&nbsp;&nbsp"
+						selected = "<p> You selected	" + "&nbsp;&nbsp;&nbsp"
 								+ ansSelected;
 					}
 				} catch (Exception e) {
@@ -298,7 +298,8 @@ public class Revision extends Activity implements OnClickListener {
 					final Dialog dialog = new Dialog(context);
 					dialog.setContentView(R.layout.revisionfinish_dialog);
 					dialog.setTitle("Revision Session");
-
+					dialog.setCanceledOnTouchOutside(false);
+					
 					Button dialogButtonOk = (Button) dialog
 							.findViewById(R.id.dialogButtonOK);
 					// if button is clicked, close the custom dialog

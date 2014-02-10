@@ -1,5 +1,6 @@
 package com.msingiapp;
 
+import java.io.File;
 import java.util.List;
 
 import android.annotation.SuppressLint;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Year extends Activity {
 	public static String question_year;
@@ -20,6 +22,8 @@ public class Year extends Activity {
 	ExamSession ex;
 	ListView list;
 	TextView subject;
+	static File myFile;
+	public static String cssData, Data;
 
 	@SuppressLint("DefaultLocale")
 	@Override
@@ -36,45 +40,29 @@ public class Year extends Activity {
 		tvYear.setText(Subjects.subject.toUpperCase());
 		Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-				this, R.array.kcpeyear, android.R.layout.simple_spinner_item);
+		List<String> year = db.getYears();
+		year.add(0, "Please Select KCPE  Year");
 
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner.setAdapter(adapter);
+		// Creating adapter for spinner
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, year);
+
+		dataAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinner.setAdapter(dataAdapter);
 
 		spinner.setOnItemSelectedListener(new OnItemSelectedListener()
 
 		{
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
-				// call various activity when item is selected in each instance
-				if (position == 0) {
-					question_year = "2013";
-					checkDatabase();
-				} else if (position == 1) {
-					question_year = "2012";
-					checkDatabase();
-				} else if (position == 2) {
-					question_year = "2011";
-					checkDatabase();
-				} else if (position == 3) {
-					question_year = "2010";
-					checkDatabase();
-				} else if (position == 4) {
-					question_year = "2009";
-					checkDatabase();
-				} else if (position == 5) {
-					question_year = "2008";
-					checkDatabase();
-				} else if (position == 6) {
-					question_year = "2007";
-					checkDatabase();
-				} else if (position == 7) {
-					question_year = "2006";
-					checkDatabase();
-				} else if (position == 8) {
-					question_year = "2005";
-					checkDatabase();
+				// On selecting a spinner item
+				String label = parent.getItemAtPosition(position).toString();
+				question_year = label;
+				if (!label.equals("Please Select KCPE  Year")) {
+					Intent exam = new Intent(Year.this, Exam.class);
+					startActivity(exam);
+					Year.this.finish();
 				}
 
 			}
@@ -93,6 +81,9 @@ public class Year extends Activity {
 	public void checkDatabase() {
 		List<ExamSession> examQuestion = db.getAllQusetions();
 		if (examQuestion.isEmpty()) {
+			Toast.makeText(getApplicationContext(),
+					Subjects.subject + "" + Year.question_year,
+					Toast.LENGTH_LONG).show();
 		} else {
 			Intent exam = new Intent(Year.this, Exam.class);
 			startActivity(exam);

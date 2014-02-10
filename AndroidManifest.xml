@@ -33,6 +33,7 @@
         </activity>
         <activity
             android:name="com.msingiapp.MainMenu"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/welcome" >
         </activity>
         <activity

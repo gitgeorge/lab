@@ -15,7 +15,7 @@
     <string name="exam_session">MsingiPACK - Exam Session</string>
     <string name="results_session">MsingiPACK - Exam Results</string>
     <string name="revision_session">MsingiPACK - Revision Session</string>
-    <string name="spinner_title">Select KCPE Year</string>
+    <string name="spinner_title"></string>
     <string name="help_label">MsingiPACK - Help</string>
     <string name="subject">KCPE EXAM</string>
     <string name="help">Help</string>

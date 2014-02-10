@@ -2,12 +2,11 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffffff" >
+    android:background="@drawable/back" >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
         android:orientation="vertical" >
 
         <!-- call Header layout -->
@@ -40,7 +39,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#ffffff"
+                     android:background="@android:color/transparent"
                     android:drawableTop="@drawable/exam"
                     android:text="Start Exam"
                     android:textColor="@layout/buttondesign" />
@@ -50,7 +49,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#ffffff"
+                    android:background="@android:color/transparent"
                     android:drawableTop="@drawable/help"
                     android:text="Get Help "
                     android:textColor="@layout/buttondesign" />
@@ -75,7 +74,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#ffffff"
+                    android:background="@android:color/transparent"
                     android:drawableTop="@drawable/button_cancel"
                     android:text="Exit MsingiPACK"
                     android:textColor="@layout/buttondesign" />
@@ -85,7 +84,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#ffffff"
+                    android:background="@android:color/transparent"
                     android:drawableTop="@drawable/about"
                     android:text="About MsingiPACK"
                     android:textColor="@layout/buttondesign" />
