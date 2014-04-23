@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Year extends Activity {
-	public static String question_year;
+	public static String question_year, subTitle;
 	DatabaseHelper db = new DatabaseHelper(this);
 	ExamSession ex;
 	ListView list;
@@ -37,12 +37,28 @@ public class Year extends Activity {
 		setContentView(R.layout.year);
 		// find view
 		TextView tvYear = (TextView) findViewById(R.id.tvsub);
-		tvYear.setText(Subjects.subject.toUpperCase());
+		String subt = Subjects.subject;
+		if (subt.contains("_")) {
+			String[] parts = subt.split("_");
+			String part1 = parts[0]; // social
+			String part2 = parts[1]; // studies
+
+			subTitle = part1 + "	" + part2;
+
+		} else {
+			subTitle = Subjects.subject;
+		}
+
+		tvYear.setText(subTitle.toUpperCase());
 		Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
 		List<String> year = db.getYears();
-		year.add(0, "Please Select KCPE  Year");
 
+		if (Subjects.subject.equals("Kiswahili")) {
+			year.add(0, "Tafathali chagua mwaka wa mtihani");
+		} else if (!Subjects.subject.equals("Kiswahili")) {
+			year.add(0, "Please Select KCPE  Year");
+		}
 		// Creating adapter for spinner
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, year);
@@ -59,7 +75,8 @@ public class Year extends Activity {
 				// On selecting a spinner item
 				String label = parent.getItemAtPosition(position).toString();
 				question_year = label;
-				if (!label.equals("Please Select KCPE  Year")) {
+				if (!label.equals("Please Select KCPE  Year")
+						&& !label.equals("Tafathali chagua mwaka wa mtihani")) {
 					Intent exam = new Intent(Year.this, Exam.class);
 					startActivity(exam);
 					Year.this.finish();

@@ -56,7 +56,7 @@ public class Subjects extends Activity {
 					subject = "Science";
 					loadNextIntent();
 				} else if (position == 4) {
-					subject = "Socialstudies";
+					subject = "Social_studies";
 					loadNextIntent();
 				} else if (position == 5) {
 					subject = "Cre";

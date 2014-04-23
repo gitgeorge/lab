@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvreport"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="@string/report" />
+
+        <TextView
+            android:id="@+id/tvspace"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:text="View report by subject" />
+
+        <Spinner
+            android:id="@+id/spinnerSub"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:drawSelectorOnTop="true"
+            android:prompt="@string/spinner_title" />
+        <TextView
+            android:id="@+id/tvspace"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+             />
+
+        <TextView
+            android:id="@+id/tvspace"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:text="View report by date" />
+        <Spinner
+            android:id="@+id/spinnerDate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:drawSelectorOnTop="true"
+            android:prompt="@string/spinner_title" />
+
+       
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="6" >
+
+        <Button
+            android:id="@+id/allreports"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="View All reports" >
+        </Button>
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Delete Reports" >
+        </Button>
+    </LinearLayout>
+
+    
+
+</RelativeLayout>

@@ -1,5 +1,9 @@
 package com.msingiapp;
 
+import java.util.List;
+
+import com.msingiapp.report.DBAdapter;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -8,10 +12,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainMenu extends Activity implements OnClickListener {
-	Button exam, help, share, quit, about;
+	Button exam, help, share, quit, about, rpt;
 	final Context context = this;
+	DBAdapter dbAdapter = new DBAdapter();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,8 @@ public class MainMenu extends Activity implements OnClickListener {
 		help.setOnClickListener(this);
 		about = (Button) findViewById(R.id.btnabout);
 		about.setOnClickListener(this);
+		rpt = (Button) findViewById(R.id.btnreports);
+		rpt.setOnClickListener(this);
 		quit = (Button) findViewById(R.id.btnquit);
 		quit.setOnClickListener(new OnClickListener() {
 
@@ -92,7 +100,40 @@ public class MainMenu extends Activity implements OnClickListener {
 			Intent about = new Intent(this, About.class);
 			startActivity(about);
 			break;
+		case R.id.btnreports:
+			Boolean isSDPresent = android.os.Environment
+					.getExternalStorageState().equals(
+							android.os.Environment.MEDIA_MOUNTED);
+			if (isSDPresent) {
+				checkDatabase();
+				break;
+			} else if (!isSDPresent) {
+				Toast.makeText(getApplicationContext(),
+						"External storage missing \n please insert an sdcard",
+						Toast.LENGTH_LONG).show();
+				break;
+			}
 
+		}
+
+	}
+
+	// method to check state of database
+	public void checkDatabase() {
+		try {
+			dbAdapter.open();
+			List<Report> examQuestion = dbAdapter.getAllReports();
+			if (examQuestion.isEmpty()) {
+				Toast.makeText(getApplicationContext(),
+						"There are no examination reports to view!\n",
+						Toast.LENGTH_LONG).show();
+			} else {
+				Intent report = new Intent(MainMenu.this, Reports.class);
+				startActivity(report);
+				MainMenu.this.finish();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 
 	}

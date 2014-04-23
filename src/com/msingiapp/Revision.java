@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class Revision extends Activity implements OnClickListener {
 	ScrollView sv;
-	TextView questionNo;
+	TextView questionNo, revisionTitle;
 	int number = 0;
 	int questNo = number + 1;
 	Button next, prev, quit;
@@ -39,7 +39,7 @@ public class Revision extends Activity implements OnClickListener {
 
 	@SuppressLint("NewApi")
 	public void initialize() {
-
+		revisionTitle = (TextView) findViewById(R.id.subTitRev);
 		questionNo = (TextView) findViewById(R.id.tvrevisonNo);
 		qusetRev = (WebView) findViewById(R.id.revison_quest_webview);
 		qusetRev.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
@@ -55,59 +55,95 @@ public class Revision extends Activity implements OnClickListener {
 
 	}
 
+	@SuppressLint("DefaultLocale")
 	public void displayFirstQuestion() {
 		// getting the elements at index 0 from database table
 		Exam.ex = (ExamSession) Exam.quest.get(0);
 
-		String questExplan = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-				+ Exam.ex.getExplanation();
-
-		String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-				+ Exam.ex.getQuestion();
-
-		String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-				+ Exam.ex.getChoice1();
-
-		String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-				+ Exam.ex.getChoice2();
-
-		String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-				+ Exam.ex.getChoice3();
-
-		String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-				+ Exam.ex.getChoice4();
-
-		String corr = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-				+ Exam.ex.getAnswer();
+		/*
+		 * String questExplan =
+		 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+		 * + Exam.ex.getExplanation();
+		 * 
+		 * String quiz =
+		 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+		 * + Exam.ex.getQuestion();
+		 * 
+		 * String choiA =
+		 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+		 * + Exam.ex.getChoice1();
+		 * 
+		 * String choiB =
+		 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+		 * + Exam.ex.getChoice2();
+		 * 
+		 * String choiC =
+		 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+		 * + Exam.ex.getChoice3();
+		 * 
+		 * String choiD =
+		 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+		 * + Exam.ex.getChoice4();
+		 * 
+		 * String corr =
+		 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+		 * + Exam.ex.getAnswer();
+		 */
 		// handling for questions not answered
 		ansSelected = Exam.ex.getSelectedAnswer();
 
-		if (ansSelected.equals("")) {
-			selected = " <p > You did not answer the question</p>";
-			correct = "<p > The correct answer is	" + "&nbsp;&nbsp;&nbsp"
-					+ corr + "</p>";
-		} else if (!ansSelected.equals("")) {
-			selected = "<p> You selected	" + "&nbsp;&nbsp;&nbsp"
-					+ ansSelected + "</p>";
-			correct = "<p> The correct answer is	" + "&nbsp;&nbsp;&nbsp" + corr
-					+ "</p>";
-		}
+		revisionTitle.setText(" KCPE	  " + Year.subTitle.toUpperCase()
+				+ "		REVISION	" + Year.question_year + " ");
 
-		questionNo.setText("	Question	" + questNo + "	out of "
-				+ Exam.quest.size());
-		qusetRev.loadDataWithBaseURL("file:///android_asset/",
-				" </p>  <p id=\"question\">" + quiz + "</p> " + "<p></p>"
-						+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
-						+ "<p></p>" + "<strong>&nbsp;B&nbsp&nbsp</strong>"
-						+ choiB + "<p></p>"
-						+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
-						+ "<p></p>" + "<strong>&nbsp;D&nbsp&nbsp</strong>"
-						+ choiD + "<p></p>"
+		if (Year.subTitle.equals("Kiswahili")) {
+
+			questionNo.setText(" Swali la  " + questNo + "	kati ya   "
+					+ Exam.quest.size());
+			next.setText("mbele");
+			prev.setText("nyuma");
+			quit.setText("maliza mtihani");
+			if (ansSelected.equals("")) {
+				selected = " <p > Hauku   jibu  swali  hili </p>";
+				correct = "<p > Jibu  sahihi  ni	" + "&nbsp;&nbsp;&nbsp"
+						+ Exam.ex.getAnswer() + "</p>";
+			} else if (!ansSelected.equals("")) {
+				selected = "<p> Ulichagua	" + "&nbsp;&nbsp;&nbsp" + ansSelected
+						+ "</p>";
+				correct = "<p> Jibu  sahihi  ni	" + "&nbsp;&nbsp;&nbsp"
+						+ Exam.ex.getAnswer() + "</p>";
+			}
+		} else {
+
+			questionNo.setText("	Question	" + questNo + "	out of 	"
+					+ Exam.quest.size());
+
+			if (ansSelected.equals("")) {
+				selected = " <p > You did not answer the question</p>";
+				correct = "<p > The correct answer is	" + "&nbsp;&nbsp;&nbsp"
+						+ Exam.ex.getAnswer() + "</p>";
+			} else if (!ansSelected.equals("")) {
+				selected = "<p> You selected	" + "&nbsp;&nbsp;&nbsp"
+						+ ansSelected + "</p>";
+				correct = "<p> The correct answer is	" + "&nbsp;&nbsp;&nbsp"
+						+ Exam.ex.getAnswer() + "</p>";
+			}
+		}
+		qusetRev.loadDataWithBaseURL(
+				"file:///android_asset/",
+				" </p>  <p id=\"question\">" + Exam.ex.getQuestion() + "</p> "
+						+ "<p></p>" + "<strong>&nbsp;A&nbsp&nbsp</strong>"
+						+ Exam.ex.getChoice1() + "<p></p>"
+						+ "<strong>&nbsp;B&nbsp&nbsp</strong>"
+						+ Exam.ex.getChoice2() + "<p></p>"
+						+ "<strong>&nbsp;C&nbsp&nbsp</strong>"
+						+ Exam.ex.getChoice3() + "<p></p>"
+						+ "<strong>&nbsp;D&nbsp&nbsp</strong>"
+						+ Exam.ex.getChoice4() + "<p></p>"
 						+ "<strong>&nbsp;&nbsp&nbsp</strong>" + selected
 						+ "<p></p>" + "<strong>&nbsp;&nbsp&nbsp</strong>"
 						+ correct + "<p></p>"
-						+ "<strong>&nbsp;&nbsp&nbsp</strong>" + questExplan,
-				"text/html", "utf-8", null);
+						+ "<strong>&nbsp;&nbsp&nbsp</strong>"
+						+ Exam.ex.getExplanation(), "text/html", "utf-8", null);
 
 	}
 
@@ -126,64 +162,99 @@ public class Revision extends Activity implements OnClickListener {
 				prev.setEnabled(true);
 				Exam.ex = (ExamSession) Exam.quest.get(number);
 				int questNo = number + 1;
-			
-				String questExplan = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getExplanation();
 
-				String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getQuestion();
+				/*
+				 * String questExplan =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getExplanation();
+				 * 
+				 * String quiz =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getQuestion();
+				 * 
+				 * String choiA =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getChoice1();
+				 * 
+				 * String choiB =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getChoice2();
+				 * 
+				 * String choiC =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getChoice3();
+				 * 
+				 * String choiD =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getChoice4();
+				 */
 
-				String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getChoice1();
+				correctAns = Exam.ex.getAnswer();
+				ansSelected = Exam.ex.getSelectedAnswer();
 
-				String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getChoice2();
-
-				String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getChoice3();
-
-				String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getChoice4();
-
-				try {
-					correctAns = Exam.ex.getAnswer();
-					ansSelected = Exam.ex.getSelectedAnswer();
-
-					// handling for questions not answered
-					if (ansSelected.equals("") || ansSelected.equals(null)) {
-						selected = "<p >You did not answer the question</p>";
-
-					} else if (!ansSelected.equals("")) {
-						selected = "<p> You selected	" + "&nbsp;&nbsp;&nbsp"
-								+ ansSelected;
-					}
-				} catch (Exception e) {
-					System.err.println("ERROOOr");
-					e.printStackTrace();
-				}
-				correct = " <p > The correct answer is	" + "&nbsp;&nbsp;&nbsp"
-						+ correctAns;
 				// displaying questions to the user
-				questionNo.setText("	Question	" + questNo + "	out of "
-						+ Exam.quest.size());
+				revisionTitle.setText(" KCPE	  " + Year.subTitle.toUpperCase()
+						+ "		REVISION	" + Year.question_year + " ");
 
-				qusetRev.loadDataWithBaseURL("file:///android_asset/",
-						" </p>  <p id=\"question\">" + quiz + "</p> "
-								+ "<p></p>"
-								+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
-								+ "<p></p>"
-								+ "<strong>&nbsp;B&nbsp&nbsp</strong>" + choiB
-								+ "<p></p>"
-								+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
-								+ "<p></p>"
-								+ "<strong>&nbsp;D&nbsp&nbsp</strong>" + choiD
-								+ "<p></p>"
+				if (Year.subTitle.equals("Kiswahili")) {
+					questionNo.setText(" Swali la  " + questNo + "	kati ya   "
+							+ Exam.quest.size());
+					next.setText("mbele");
+					prev.setText("nyuma");
+					quit.setText("maliza mtihani");
+					try {// handling for questions not answered
+						if (ansSelected.equals("") || ansSelected.equals(null)) {
+							selected = "<p >Hauku   jibu  swali  hili</p>";
+
+						} else if (!ansSelected.equals("")) {
+							selected = "<p> Ulichagua	" + "&nbsp;&nbsp;&nbsp"
+									+ ansSelected;
+						}
+					} catch (Exception e) {
+						System.err.println("ERROOOr");
+						e.printStackTrace();
+					}
+					correct = " <p > Jibu  sahihi  ni	" + "&nbsp;&nbsp;&nbsp"
+							+ correctAns;
+
+				} else {
+					questionNo.setText("	Question	" + questNo + "	out of 	"
+							+ Exam.quest.size());
+					try {// handling for questions not answered
+						if (ansSelected.equals("") || ansSelected.equals(null)) {
+							selected = "<p >You did not answer the question</p>";
+
+						} else if (!ansSelected.equals("")) {
+							selected = "<p> You selected	"
+									+ "&nbsp;&nbsp;&nbsp" + ansSelected;
+						}
+					} catch (Exception e) {
+						System.err.println("ERROOOr");
+						e.printStackTrace();
+					}
+					correct = " <p > The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + correctAns;
+
+				}
+				qusetRev.loadDataWithBaseURL(
+						"file:///android_asset/",
+						" </p>  <p id=\"question\">" + Exam.ex.getQuestion()
+								+ "</p> " + "<p></p>"
+								+ "<strong>&nbsp;A&nbsp&nbsp</strong>"
+								+ Exam.ex.getChoice1() + "<p></p>"
+								+ "<strong>&nbsp;B&nbsp&nbsp</strong>"
+								+ Exam.ex.getChoice2() + "<p></p>"
+								+ "<strong>&nbsp;C&nbsp&nbsp</strong>"
+								+ Exam.ex.getChoice3() + "<p></p>"
+								+ "<strong>&nbsp;D&nbsp&nbsp</strong>"
+								+ Exam.ex.getChoice4() + "<p></p>"
 								+ "<strong>&nbsp;&nbsp&nbsp</strong>"
 								+ selected + "<p></p>"
 								+ "<strong>&nbsp;&nbsp&nbsp</strong>" + correct
 								+ "<p></p>"
 								+ "<strong>&nbsp;&nbsp&nbsp</strong>"
-								+ questExplan, "text/html", "utf-8", null);
+								+ Exam.ex.getExplanation(), "text/html",
+						"utf-8", null);
 
 				if (number == Exam.quest.size() - 1) {
 					/*
@@ -202,6 +273,7 @@ public class Revision extends Activity implements OnClickListener {
 
 	}
 
+	@SuppressLint("DefaultLocale")
 	public void previousRecord() {
 		number--;
 		try {
@@ -219,61 +291,98 @@ public class Revision extends Activity implements OnClickListener {
 				Exam.ex = (ExamSession) Exam.quest.get(number);
 				int questNo = number + 1;
 
-				String questExplan = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getExplanation();
+				/*
+				 * String questExplan =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getExplanation();
+				 * 
+				 * String quiz =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getQuestion();
+				 * 
+				 * String choiA =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getChoice1();
+				 * 
+				 * String choiB =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getChoice2();
+				 * 
+				 * String choiC =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getChoice3();
+				 * 
+				 * String choiD =
+				 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+				 * + Exam.ex.getChoice4();
+				 */
 
-				String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getQuestion();
+				correctAns = Exam.ex.getAnswer();
+				ansSelected = Exam.ex.getSelectedAnswer();
 
-				String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getChoice1();
-
-				String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getChoice2();
-
-				String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getChoice3();
-
-				String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-						+ Exam.ex.getChoice4();
-				try {
-					correctAns = Exam.ex.getAnswer();
-					ansSelected = Exam.ex.getSelectedAnswer();
-					// handling for questions not answered
-					if (ansSelected.equals("") || ansSelected.equals(null)) {
-						selected = "<p >You did not answer the question</p>";
-
-					} else if (!ansSelected.equals("")) {
-						selected = "<p> You selected:	" + "&nbsp;&nbsp;&nbsp"
-								+ ansSelected;
-					}
-				} catch (Exception e) {
-					System.err.println("ERROOOr");
-					e.printStackTrace();
-				}
-				correct = " <p > The correct answer is	" + "&nbsp;&nbsp;&nbsp"
-						+ correctAns;
 				// displaying questions to the user
-				questionNo.setText("	Question	" + questNo + "	out of "
-						+ Exam.quest.size());
+				revisionTitle.setText(" KCPE	  " + Year.subTitle.toUpperCase()
+						+ "		REVISION	" + Year.question_year + " ");
 
-				qusetRev.loadDataWithBaseURL("file:///android_asset/",
-						" </p>  <p id=\"question\">" + quiz + "</p> "
-								+ "<p></p>"
-								+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
-								+ "<p></p>"
-								+ "<strong>&nbsp;B&nbsp&nbsp</strong>" + choiB
-								+ "<p></p>"
-								+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
-								+ "<p></p>"
-								+ "<strong>&nbsp;D&nbsp&nbsp</strong>" + choiD
-								+ "<p></p>"
+				if (Year.subTitle.equals("Kiswahili")) {
+					questionNo.setText(" Swali la  " + questNo + "	kati ya   "
+							+ Exam.quest.size());
+					next.setText("mbele");
+					prev.setText("nyuma");
+					quit.setText("maliza mtihani");
+					try {// handling for questions not answered
+						if (ansSelected.equals("") || ansSelected.equals(null)) {
+							selected = "<p >Hauku   jibu  swali  hili</p>";
+
+						} else if (!ansSelected.equals("")) {
+							selected = "<p> Ulichagua	" + "&nbsp;&nbsp;&nbsp"
+									+ ansSelected;
+						}
+					} catch (Exception e) {
+						System.err.println("ERROOOr");
+						e.printStackTrace();
+					}
+					correct = " <p > Jibu  sahihi  ni	" + "&nbsp;&nbsp;&nbsp"
+							+ correctAns;
+
+				} else {
+					questionNo.setText("	Question	" + questNo + "	out of 	"
+							+ Exam.quest.size());
+					try {// handling for questions not answered
+						if (ansSelected.equals("") || ansSelected.equals(null)) {
+							selected = "<p >You did not answer the question</p>";
+
+						} else if (!ansSelected.equals("")) {
+							selected = "<p> You selected	"
+									+ "&nbsp;&nbsp;&nbsp" + ansSelected;
+						}
+					} catch (Exception e) {
+						System.err.println("ERROOOr");
+						e.printStackTrace();
+					}
+					correct = " <p > The correct answer is	"
+							+ "&nbsp;&nbsp;&nbsp" + correctAns;
+
+				}
+				qusetRev.loadDataWithBaseURL(
+						"file:///android_asset/",
+						" </p>  <p id=\"question\">" + Exam.ex.getQuestion()
+								+ "</p> " + "<p></p>"
+								+ "<strong>&nbsp;A&nbsp&nbsp</strong>"
+								+ Exam.ex.getChoice1() + "<p></p>"
+								+ "<strong>&nbsp;B&nbsp&nbsp</strong>"
+								+ Exam.ex.getChoice2() + "<p></p>"
+								+ "<strong>&nbsp;C&nbsp&nbsp</strong>"
+								+ Exam.ex.getChoice3() + "<p></p>"
+								+ "<strong>&nbsp;D&nbsp&nbsp</strong>"
+								+ Exam.ex.getChoice4() + "<p></p>"
 								+ "<strong>&nbsp;&nbsp&nbsp</strong>"
 								+ selected + "<p></p>"
 								+ "<strong>&nbsp;&nbsp&nbsp</strong>" + correct
 								+ "<p></p>"
 								+ "<strong>&nbsp;&nbsp&nbsp</strong>"
-								+ questExplan, "text/html", "utf-8", null);
+								+ Exam.ex.getExplanation(), "text/html",
+						"utf-8", null);
 
 			}
 		} catch (Exception e) {
@@ -294,12 +403,16 @@ public class Revision extends Activity implements OnClickListener {
 					Intent mainmenu = new Intent(Revision.this, MainMenu.class);
 					startActivity(mainmenu);
 				} else if (number < Exam.quest.size() - 1) {
-
 					final Dialog dialog = new Dialog(context);
-					dialog.setContentView(R.layout.revisionfinish_dialog);
-					dialog.setTitle("Revision Session");
+					if (Year.subTitle.equals("Kiswahili")) {
+						dialog.setContentView(R.layout.revisionfinish_dialog_swa);
+						dialog.setTitle("Mda wa marudio");
+					} else if (!Year.subTitle.equals("Kiswahili")) {
+						dialog.setContentView(R.layout.revisionfinish_dialog);
+						dialog.setTitle("Revision Session");
+					}
 					dialog.setCanceledOnTouchOutside(false);
-					
+
 					Button dialogButtonOk = (Button) dialog
 							.findViewById(R.id.dialogButtonOK);
 					// if button is clicked, close the custom dialog

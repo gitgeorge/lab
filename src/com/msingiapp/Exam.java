@@ -2,6 +2,8 @@ package com.msingiapp;
 
 import java.util.List;
 
+
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -25,6 +27,7 @@ public class Exam extends Activity implements OnClickListener {
 	public static ExamSession ex;
 	WebView webQuest;
 	TextView questionNo;
+	TextView examTitle;
 	public RadioGroup rgroup;
 	public RadioButton radioA, radioB, radioC, radioD;
 	ScrollView sv;
@@ -37,6 +40,7 @@ public class Exam extends Activity implements OnClickListener {
 	public static String ans;
 	final Context context = this;
 	public static String selected = "", correct = "";
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +58,7 @@ public class Exam extends Activity implements OnClickListener {
 
 	@SuppressLint({ "NewApi" })
 	public void initialize() {
-
+		examTitle = (TextView) findViewById(R.id.subTit);
 		questionNo = (TextView) findViewById(R.id.tvquestionNumber1);
 		webQuest = (WebView) findViewById(R.id.quest_web_view1);
 		webQuest.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
@@ -109,44 +113,64 @@ public class Exam extends Activity implements OnClickListener {
 		} else {
 			ex = (ExamSession) quest.get(0);
 
-			questionNo.setText("	Question	    " + questNo + "	out of "
-					+ quest.size());
-			String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getQuestion();
+			examTitle.setText("KCPE	 " + Year.subTitle.toUpperCase() + "	 "
+					+ Year.question_year);
 
-			String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice1();
+			if (Year.subTitle.equals("Kiswahili")) {
+				questionNo.setText(" Swali la  " + questNo + "	kati ya   "
+						+ quest.size());
+				next.setText("mbele");
+				prev.setText("nyuma");
+				quit.setText("maliza mtihani");
+			} else {
 
-			String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice2();
+				questionNo.setText(" Question    " + questNo + "	out of    "
+						+ quest.size());
+			}
+			/*
+			 * String quiz =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getQuestion();
+			 * 
+			 * String choiA =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice1();
+			 * 
+			 * String choiB =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice2();
+			 * 
+			 * String choiC =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice3();
+			 * 
+			 * String choiD =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice4();
+			 */
 
-			String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice3();
-
-			String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice4();
-
-			webQuest.loadDataWithBaseURL("file:///android_asset/",
-					" </p>  <p id=\"question\">" + quiz + "</p> " + "<p></p>"
-							+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
-							+ "<p></p>" + "<strong>&nbsp;B&nbsp&nbsp</strong>"
-							+ choiB + "<p></p>"
-							+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
-							+ "<p></p>" + "<strong>&nbsp;D&nbsp&nbsp</strong>"
-							+ choiD, "text/html", "utf-8", null);
+			webQuest.loadDataWithBaseURL(
+					"file:///android_asset/",
+					" </p>  <p id=\"question\">" + ex.getQuestion() + "</p> "
+							+ "<p></p>" + "<strong>&nbsp;A&nbsp&nbsp</strong>"
+							+ ex.getChoice1() + "<p></p>"
+							+ "<strong>&nbsp;B&nbsp&nbsp</strong>"
+							+ ex.getChoice2() + "<p></p>"
+							+ "<strong>&nbsp;C&nbsp&nbsp</strong>"
+							+ ex.getChoice3() + "<p></p>"
+							+ "<strong>&nbsp;D&nbsp&nbsp</strong>"
+							+ ex.getChoice4(), "text/html", "utf-8", null);
 
 		}
 
 	}
 
+	@SuppressLint("DefaultLocale")
 	public void nextRecord() {
 		number++;
 		if (number == quest.size()) {
 			/* if user has reached the end of results, disable forward button */
-			// Toast.makeText(getApplicationContext(),"number"+
-			// number+"size is "+quest.size(), Toast.LENGTH_SHORT).show();
-			// next.setEnabled(false);
-			// prev.setEnabled(true);
+
 			// dec by one to counter last inc
 			number--;
 		} else {
@@ -155,35 +179,56 @@ public class Exam extends Activity implements OnClickListener {
 			int questNo = number + 1;
 			// displaying questions to the user
 			ans = ex.getSelectedAnswer();
-			questionNo.setText("	Question	    " + questNo + "	out of "
-					+ quest.size());
-			String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getQuestion();
 
-			String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice1();
+			examTitle.setText("KCPE	 " + Year.subTitle.toUpperCase() + "	 "
+					+ Year.question_year);
 
-			String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice2();
+			if (Year.subTitle.equals("Kiswahili")) {
+				questionNo.setText(" Swali la  " + questNo + "	kati ya   "
+						+ quest.size());
+				next.setText("mbele");
+				prev.setText("nyuma");
+				quit.setText("maliza mtihani");
+			} else {
 
-			String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice3();
-
-			String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice4();
+				questionNo.setText(" Question    " + questNo + "	out of    "
+						+ quest.size());
+			}
+			/*
+			 * String quiz =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getQuestion();
+			 * 
+			 * String choiA =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice1();
+			 * 
+			 * String choiB =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice2();
+			 * 
+			 * String choiC =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice3();
+			 * 
+			 * String choiD =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice4();
+			 */
 			try {
 
-				webQuest.loadDataWithBaseURL("file:///android_asset/",
-						" </p>  <p id=\"question\">" + quiz + "</p> "
-								+ "<p></p>"
-								+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
-								+ "<p></p>"
-								+ "<strong>&nbsp;B&nbsp&nbsp</strong>" + choiB
-								+ "<p></p>"
-								+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
-								+ "<p></p>"
-								+ "<strong>&nbsp;D&nbsp&nbsp</strong>" + choiD,
-						"text/html", "utf-8", null);
+				webQuest.loadDataWithBaseURL(
+						"file:///android_asset/",
+						" </p>  <p id=\"question\">" + ex.getQuestion()
+								+ "</p> " + "<p></p>"
+								+ "<strong>&nbsp;A&nbsp&nbsp</strong>"
+								+ ex.getChoice1() + "<p></p>"
+								+ "<strong>&nbsp;B&nbsp&nbsp</strong>"
+								+ ex.getChoice2() + "<p></p>"
+								+ "<strong>&nbsp;C&nbsp&nbsp</strong>"
+								+ ex.getChoice3() + "<p></p>"
+								+ "<strong>&nbsp;D&nbsp&nbsp</strong>"
+								+ ex.getChoice4(), "text/html", "utf-8", null);
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -221,35 +266,56 @@ public class Exam extends Activity implements OnClickListener {
 			int questNo = number + 1;
 			// displaying search record in text fields
 			ans = ex.getSelectedAnswer();
-			questionNo.setText("	Question	    " + questNo + "	out of "
-					+ quest.size());
-			String quiz = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getQuestion();
 
-			String choiA = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice1();
+			examTitle.setText("KCPE	 " + Year.subTitle.toUpperCase() + "	 "
+					+ Year.question_year);
 
-			String choiB = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice2();
+			if (Year.subTitle.equals("Kiswahili")) {
+				questionNo.setText(" Swali la  " + questNo + "	kati ya   "
+						+ quest.size());
+				next.setText("mbele");
+				prev.setText("nyuma");
+				quit.setText("maliza mtihani");
+			} else {
 
-			String choiC = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice3();
-
-			String choiD = "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
-					+ ex.getChoice4();
+				questionNo.setText(" Question    " + questNo + "	out of    "
+						+ quest.size());
+			}
+			/*
+			 * String quiz =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getQuestion();
+			 * 
+			 * String choiA =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice1();
+			 * 
+			 * String choiB =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice2();
+			 * 
+			 * String choiC =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice3();
+			 * 
+			 * String choiD =
+			 * "<link rel=\"stylesheet\" type=\"text/css\" href=\"msingipack.css\" />"
+			 * + ex.getChoice4();
+			 */
 			try {
 
-				webQuest.loadDataWithBaseURL("file:///android_asset/",
-						" </p>  <p id=\"question\">" + quiz + "</p> "
-								+ "<p></p>"
-								+ "<strong>&nbsp;A&nbsp&nbsp</strong>" + choiA
-								+ "<p></p>"
-								+ "<strong>&nbsp;B&nbsp&nbsp</strong>" + choiB
-								+ "<p></p>"
-								+ "<strong>&nbsp;C&nbsp&nbsp</strong>" + choiC
-								+ "<p></p>"
-								+ "<strong>&nbsp;D&nbsp&nbsp</strong>" + choiD,
-						"text/html", "utf-8", null);
+				webQuest.loadDataWithBaseURL(
+						"file:///android_asset/",
+						" </p>  <p id=\"question\">" + ex.getQuestion()
+								+ "</p> " + "<p></p>"
+								+ "<strong>&nbsp;A&nbsp&nbsp</strong>"
+								+ ex.getChoice1() + "<p></p>"
+								+ "<strong>&nbsp;B&nbsp&nbsp</strong>"
+								+ ex.getChoice2() + "<p></p>"
+								+ "<strong>&nbsp;C&nbsp&nbsp</strong>"
+								+ ex.getChoice3() + "<p></p>"
+								+ "<strong>&nbsp;D&nbsp&nbsp</strong>"
+								+ ex.getChoice4(), "text/html", "utf-8", null);
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -305,8 +371,13 @@ public class Exam extends Activity implements OnClickListener {
 
 	public void confirmMarking() {
 		final Dialog dialog = new Dialog(context);
-		dialog.setContentView(R.layout.examfinish_dialog);
-		dialog.setTitle("Exam Session");
+		if (Year.subTitle.equals("Kiswahili")) {
+			dialog.setContentView(R.layout.examfinish_dialog_swa);
+			dialog.setTitle("Mda wa mthihani");
+		} else if (!Year.subTitle.equals("Kiswahili")) {
+			dialog.setContentView(R.layout.examfinish_dialog);
+			dialog.setTitle("Exam Session");
+		}
 		dialog.setCanceledOnTouchOutside(false);
 
 		Button dialogButtonOk = (Button) dialog
@@ -408,11 +479,6 @@ public class Exam extends Activity implements OnClickListener {
 		case R.id.Button_Quit:
 			lastSelectedAns();
 			markExam();
-			// try and insert exam details
-			/*
-			 * db.insertExamDetails(Grade.percent, Grade.grade, Grade.remarks,
-			 * Subjects.subject, Year.question_year);
-			 */
 			break;
 		case R.id.Button_Next:
 			nextRecord();
@@ -438,7 +504,7 @@ public class Exam extends Activity implements OnClickListener {
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
-		super.onDestroy();
-		finish();
+		super.onDestroy();			
+			finish();
 	}
 }

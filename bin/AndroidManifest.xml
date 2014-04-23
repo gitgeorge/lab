@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="17" />
 
     <supports-screens
@@ -16,6 +16,8 @@
         android:smallScreens="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -58,6 +60,17 @@
         <activity
             android:name="com.msingiapp.Revision"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/app_header" >
+        </activity>
+         <activity
+            android:name="com.msingiapp.Reports"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/app_header" >
+        </activity>
+        <activity
+            android:name="com.msingiapp.Report_Main"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="landscape"
             android:label="@string/app_header" >
         </activity>
         <activity android:name="com.msingiapp.DatabaseHelper" >

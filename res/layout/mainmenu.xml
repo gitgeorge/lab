@@ -16,7 +16,7 @@
 
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="100dp" />
+            android:layout_height="50dp" />
         <!-- another layout to hold the button rows -->
 
         <LinearLayout
@@ -39,10 +39,15 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                     android:background="@android:color/transparent"
+                    android:background="@android:color/transparent"
                     android:drawableTop="@drawable/exam"
                     android:text="Start Exam"
                     android:textColor="@layout/buttondesign" />
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content" />
+                <!-- another layout to hold the button rows -->
 
                 <Button
                     android:id="@+id/btnhelp"
@@ -59,9 +64,34 @@
 
             <TextView
                 android:layout_width="fill_parent"
-                android:layout_height="150dp" />
-
+                android:layout_height="100dp" />
             <!-- 2nd row -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnreports"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:drawableTop="@drawable/report_icon"
+                    android:text="Reports"
+                    android:textColor="@layout/buttondesign" />
+            </LinearLayout>
+            <!-- spaces -->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dp" />
+            <!-- Space -->
+
+
+            <!-- 3rd row -->
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -79,6 +109,11 @@
                     android:text="Exit MsingiPACK"
                     android:textColor="@layout/buttondesign" />
 
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content" />
+                <!-- another layout to hold the button rows -->
+
                 <Button
                     android:id="@+id/btnabout"
                     android:layout_width="fill_parent"
@@ -89,13 +124,11 @@
                     android:text="About MsingiPACK"
                     android:textColor="@layout/buttondesign" />
             </LinearLayout>
-            <!-- spaces -->
+            <!-- space -->
 
             <TextView
                 android:layout_width="fill_parent"
-                android:layout_height="20dp" />
-            <!-- Space -->
-
+                android:layout_height="50dp" />
         </LinearLayout>
     </LinearLayout>
 

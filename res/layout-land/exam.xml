@@ -8,11 +8,19 @@
         android:id="@+id/layout01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         android:layout_above="@+id/radioGroup"
+        android:layout_above="@+id/radioGroup"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:gravity="top|left"
         android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/subTit"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:paddingLeft="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvquestionNumber1"
@@ -28,8 +36,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-
-
 
     <RadioGroup
         android:id="@+id/radioGroup"

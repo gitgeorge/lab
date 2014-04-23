@@ -1,99 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/back"
-    android:orientation="vertical" >
-
-    <!-- call Header layout -->
-
-    <include layout="@layout/header" />
-    <!-- space -->
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="30dp" />
-    <!-- another layout to hold the button rows -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/back" >
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:padding="6dip" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-        <!-- 1st row -->
+        <!-- call Header layout -->
+
+        <include layout="@layout/header" />
+        <!-- space -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" />
+        <!-- another layout to hold the button rows -->
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="6dip" >
 
-            <Button
-                android:id="@+id/btnexam"
+            <!-- 1st row -->
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/exam"
-                android:text="Start Exam"
-                android:textColor="@layout/buttondesign" />
+                android:layout_weight="0"
+                android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/btnhelp"
+                <Button
+                    android:id="@+id/btnexam"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:drawableTop="@drawable/exam"
+                    android:text="Start Exam"
+                    android:textColor="@layout/buttondesign" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content" />
+                <!-- another layout to hold the button rows -->
+
+                <Button
+                    android:id="@+id/btnhelp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:drawableTop="@drawable/help"
+                    android:text="Get Help "
+                    android:textColor="@layout/buttondesign" />
+            </LinearLayout>
+
+            <!-- spaces -->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dp" />
+            <!-- 2nd row -->
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/help"
-                android:text="Get Help "
-                android:textColor="@layout/buttondesign" />
+                android:layout_weight="0"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnreports"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:drawableTop="@drawable/report_icon"
+                    android:text="Reports"
+                    android:textColor="@layout/buttondesign" />
+            </LinearLayout>
+            <!-- spaces -->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="100dp" />
+            <!-- Space -->
+
+
+            <!-- 3rd row -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnquit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:drawableTop="@drawable/button_cancel"
+                    android:text="Exit MsingiPACK"
+                    android:textColor="@layout/buttondesign" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content" />
+                <!-- another layout to hold the button rows -->
+
+                <Button
+                    android:id="@+id/btnabout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:drawableTop="@drawable/about"
+                    android:text="About MsingiPACK"
+                    android:textColor="@layout/buttondesign" />
+            </LinearLayout>
+            <!-- space -->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" />
         </LinearLayout>
-
-        <!-- spaces -->
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="80dp" />
-
-        <!-- 2nd row -->
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/btnquit"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/button_cancel"
-                android:text="Exit MsingiPACK"
-                android:textColor="@layout/buttondesign" />
-
-            <Button
-                android:id="@+id/btnabout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:drawableTop="@drawable/about"
-                android:text="About MsingiPACK"
-                android:textColor="@layout/buttondesign" />
-        </LinearLayout>
-        <!-- spaces -->
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="60dp" />
-        <!-- Space -->
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="60dp" />
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
