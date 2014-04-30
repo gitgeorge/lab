@@ -58,6 +58,7 @@
      <string name="ndiyo">ndiyo</string>
     <string name="la">la</string>
     <string name="quitMsingiPACK"> Are you sure you want to Exit MsingiPACK ? </string>
+     <string name="confirm_rpt"> Are you sure you want to clear all the reports? </string>
     <string name="explanation">Here is the explanation for the correct answer.</string>
     <string name="examfinish">Some questions are unanswered and will be marked as incorrect. Do you want to end the exam?</string>
      <string name="examfinish_swa">Baathi ya maswali hayajajibiwa na yatasahihishwa kama umekosa. Je unataka kumaliza mtihani?</string>

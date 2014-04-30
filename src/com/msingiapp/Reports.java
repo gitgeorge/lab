@@ -4,6 +4,8 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +24,7 @@ public class Reports extends Activity implements OnClickListener {
 	public static String subj;
 	Button report, delete;
 	public static String query;
+	final Context context = this;
 	CalendarView cal;
 	DBAdapter dbAdapter = new DBAdapter();
 
@@ -137,15 +140,55 @@ public class Reports extends Activity implements OnClickListener {
 			try {
 				dbAdapter.open();
 				dbAdapter.deleteRecords();
-				Toast.makeText(getApplicationContext(),
-						"All records have been cleared", Toast.LENGTH_LONG)
-						.show();
+				final Dialog dialog = new Dialog(context);
+				dialog.setContentView(R.layout.report_del);
+				dialog.setTitle("MsingiPACK");
+				dialog.setCanceledOnTouchOutside(false);
+
+				Button dialogButtonOk = (Button) dialog
+						.findViewById(R.id.dialogButtonOK);
+				// if button is clicked, close the custom dialog
+				dialogButtonOk.setOnClickListener(new OnClickListener() {
+					@SuppressWarnings("static-access")
+					@Override
+					public void onClick(View v) {
+						dialog.dismiss();
+						Toast.makeText(getApplicationContext(),
+								"All records have been cleared",
+								Toast.LENGTH_LONG).show();
+						Intent mn = new Intent(Reports.this, MainMenu.class);
+						startActivity(mn);
+						finish();
+					}
+
+				});
+				Button dialogCancel = (Button) dialog
+						.findViewById(R.id.dialogButtonCancel);
+				dialogCancel.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						dialog.dismiss();
+					}
+				});
+				dialog.show();
+				break;
+
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			break;
+
 		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		Reports.this.finish();
+		Intent mn = new Intent(Reports.this, MainMenu.class);
+		startActivity(mn);
+		
 	}
 
 	@Override
@@ -162,10 +205,11 @@ public class Reports extends Activity implements OnClickListener {
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
 		try {
 			dbAdapter.close();
 			super.onDestroy();
+			finish();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

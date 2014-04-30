@@ -5,8 +5,10 @@ import java.util.List;
 import com.msingiapp.report.DBAdapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -46,39 +48,7 @@ public class MainMenu extends Activity implements OnClickListener {
 			@Override
 			public void onClick(View arg0) {
 				try {
-
-					final Dialog dialog = new Dialog(context);
-					dialog.setContentView(R.layout.appexit_dailog);
-					dialog.setTitle("MsingiPACK");
-					dialog.setCanceledOnTouchOutside(false);
-
-					Button dialogButtonOk = (Button) dialog
-							.findViewById(R.id.dialogButtonOK);
-					// if button is clicked, close the custom dialog
-					dialogButtonOk.setOnClickListener(new OnClickListener() {
-						@SuppressWarnings("static-access")
-						@Override
-						public void onClick(View v) {
-							dialog.dismiss();
-							MainMenu.this.finish();
-							Intent intent = new Intent(Intent.ACTION_MAIN);
-							intent.addCategory(Intent.CATEGORY_HOME);
-							intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-							intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
-							startActivity(intent);
-
-						}
-					});
-					Button dialogCancel = (Button) dialog
-							.findViewById(R.id.dialogButtonCancel);
-					dialogCancel.setOnClickListener(new OnClickListener() {
-
-						@Override
-						public void onClick(View v) {
-							dialog.dismiss();
-						}
-					});
-					dialog.show();
+					exitApp();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -136,6 +106,56 @@ public class MainMenu extends Activity implements OnClickListener {
 			// TODO: handle exception
 		}
 
+	}
+
+	public void exitApp() {
+		final Dialog dialog = new Dialog(context);
+		dialog.setContentView(R.layout.appexit_dailog);
+		dialog.setTitle("MsingiPACK");
+		dialog.setCanceledOnTouchOutside(false);
+
+		Button dialogButtonOk = (Button) dialog
+				.findViewById(R.id.dialogButtonOK);
+		// if button is clicked, close the custom dialog
+		dialogButtonOk.setOnClickListener(new OnClickListener() {
+			@SuppressWarnings("static-access")
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+				MainMenu.this.finish();
+				Intent intent = new Intent(Intent.ACTION_MAIN);
+				intent.addCategory(Intent.CATEGORY_HOME);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+
+			}
+		});
+		Button dialogCancel = (Button) dialog
+				.findViewById(R.id.dialogButtonCancel);
+		dialogCancel.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		dialog.show();
+	}
+
+	@Override
+	public void onBackPressed() {
+		exitApp();
+	    /*new AlertDialog.Builder(this)
+	           .setMessage("Are you sure you want to exit?")
+	           .setCancelable(false)
+	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+	               public void onClick(DialogInterface dialog, int id) {
+	                    MainMenu.this.finish();
+	               }
+	           })
+	           .setNegativeButton("No", null)
+	           .show();*/
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package com.msingiapp;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -74,6 +75,14 @@ public class Report_Main extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		Intent mn = new Intent(Report_Main.this, Reports.class);
+		startActivity(mn);
 	}
 
 	@Override
